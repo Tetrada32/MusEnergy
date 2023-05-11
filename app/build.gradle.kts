@@ -50,15 +50,15 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra.get("kotlinVersion") as String}")
 
-    implementation("androidx.activity:activity-ktx:1.6.1")
-    implementation("androidx.fragment:fragment-ktx:1.5.5")
+    implementation("androidx.activity:activity-ktx:1.7.1")
+    implementation("androidx.fragment:fragment-ktx:1.5.7")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.10.0")
 
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.google.android.material:material:1.8.0")
-    implementation("dev.chrisbanes.insetter:insetter-dbx:0.5.0")
-    implementation("dev.chrisbanes.insetter:insetter:0.5.0")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("dev.chrisbanes.insetter:insetter-dbx:0.6.1")
+    implementation("dev.chrisbanes.insetter:insetter:0.6.1")
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
@@ -70,10 +70,6 @@ dependencies {
 
     implementation("com.squareup.picasso:picasso:2.71828")
 
-    implementation("com.airbnb.android:lottie:3.6.1")
-
-
-    implementation(project(":core"))
-    implementation(project(":demo-domain"))
+    implementation("com.airbnb.android:lottie:5.2.0")
 
 }
