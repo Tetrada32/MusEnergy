@@ -1,7 +1,9 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    kotlin("kapt")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -44,6 +46,10 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -63,8 +69,8 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
 
-    implementation("io.insert-koin:koin-android:3.3.3")
-    implementation("io.insert-koin:koin-android:3.3.3")
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
 
     implementation("androidx.startup:startup-runtime:1.1.1")
 
