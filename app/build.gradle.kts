@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.gahov.musenergy"
-        minSdk = 21
+        minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -74,8 +74,11 @@ dependencies {
 
     implementation("androidx.startup:startup-runtime:1.1.1")
 
-    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("io.coil-kt:coil:2.2.2")
 
     implementation("com.airbnb.android:lottie:5.2.0")
+
+    implementation(project(":data"))
+    implementation(project(":domain"))
 
 }
