@@ -1,5 +1,6 @@
 package com.gahov.musenergy.arch.ui.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +10,9 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.gahov.musenergy.arch.ui.view.BaseView
 import com.gahov.architecture.core.ui.view.model.TextProvider
 import com.gahov.domain.component.logger.Level
 import com.gahov.domain.component.logger.Logger
@@ -24,28 +26,38 @@ import com.gahov.musenergy.arch.router.NavComponentRouter
 import com.gahov.musenergy.arch.router.Router
 import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.router.command.NavDirection
+import com.gahov.musenergy.arch.ui.view.BaseView
+import javax.inject.Inject
 
-
-abstract class BaseFragment<T : ViewDataBinding>(
-    @LayoutRes private val contentLayoutID: Int
+abstract class BaseFragment<B : ViewDataBinding, T : ViewModel>(
+    @LayoutRes private val contentLayoutID: Int,
+    private val viewModelClass: Class<T>,
 ) : Fragment(), BaseView, RouterProvider {
 
-    protected lateinit var binding: T
+    protected lateinit var binding: B
         private set
 
-    //TODO
-//    private val logger: Logger by inject { parametersOf(this) }
-    private lateinit var logger: Logger
+    protected lateinit var viewModel: T
 
-    //TODO
-//    protected open val failureHandler: ErrorHandler by inject()
-    private lateinit var errorHandler: ErrorHandler
+    @Inject
+    protected open lateinit var logger: Logger
+
+    @Inject
+    protected open lateinit var failureHandler: ErrorHandler
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override val router: Router by lazy {
         NavComponentRouter(
             navController = findNavController(),
             logger = logger
         )
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        viewModel = ViewModelProvider(this, viewModelFactory)[viewModelClass]
     }
 
     override fun onCreateView(
@@ -81,7 +93,7 @@ abstract class BaseFragment<T : ViewDataBinding>(
     }
 
     protected open fun setBaseObservers() {
-        getViewModel()?.let {
+        getCurrentViewModel()?.let {
             it.errorEvent.observe(viewLifecycleOwner, ::displayError)
             it.navigationCommand.observe(viewLifecycleOwner, ::navigate)
             it.message.observe(viewLifecycleOwner, ::showMessage)
@@ -102,14 +114,20 @@ abstract class BaseFragment<T : ViewDataBinding>(
         )
     }
 
+    open fun logMessage(message: TextProvider.Text) {
+        logger.log(
+            message = message.text
+        )
+    }
+
     protected open fun setObservers() {}
 
-    protected open fun getViewModel(): BaseViewModel? {
+    protected open fun getCurrentViewModel(): BaseViewModel? {
         return null
     }
 
     override fun displayError(failure: Failure) {
-        errorHandler.parseFailure(failure)
+        failureHandler.parseFailure(failure)
     }
 
     override fun showMessage(textProvider: TextProvider) {

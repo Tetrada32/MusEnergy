@@ -23,6 +23,7 @@ import com.gahov.musenergy.arch.router.NavComponentRouter
 import com.gahov.musenergy.arch.router.Router
 import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.router.command.NavDirection
+import javax.inject.Inject
 
 @SuppressWarnings("unused")
 abstract class BaseDialogFragment<T : ViewDataBinding>(
@@ -32,13 +33,11 @@ abstract class BaseDialogFragment<T : ViewDataBinding>(
     protected lateinit var binding: T
         private set
 
-    //TODO
-//    private val logger: Logger by inject { parametersOf(this) }
-    private lateinit var logger: Logger
+    @Inject
+    protected open lateinit var logger: Logger
 
-    //TODO
-//    protected open val failureHandler: ErrorHandler by inject()
-    private lateinit var errorHandler: ErrorHandler
+    @Inject
+    protected open lateinit var failureHandler: ErrorHandler
 
     override val router: Router by lazy {
         NavComponentRouter(
@@ -112,6 +111,6 @@ abstract class BaseDialogFragment<T : ViewDataBinding>(
     }
 
     override fun displayError(failure: Failure) {
-        errorHandler.parseFailure(failure)
+        failureHandler.parseFailure(failure)
     }
 }
