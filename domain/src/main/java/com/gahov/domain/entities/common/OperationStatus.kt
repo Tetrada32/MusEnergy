@@ -1,4 +1,4 @@
-package com.gahov.domain.entities
+package com.gahov.domain.entities.common
 
 enum class OperationStatus {
     SUCCESS,

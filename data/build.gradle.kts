@@ -2,7 +2,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
-    id("kotlin-parcelize")
+    id("kotlinx-serialization")
 }
 
 android {
@@ -62,6 +62,9 @@ dependencies {
 
         implementation("androidx.room:room-runtime:2.5.1")
         kapt("androidx.room:room-compiler:2.5.1")
+
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+        implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
 
 
         implementation(project(":domain"))

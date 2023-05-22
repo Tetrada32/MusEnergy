@@ -1,4 +1,4 @@
-package com.gahov.domain.entities
+package com.gahov.domain.entities.common
 
 /**
  * Represents a value of one of two possible types (a disjoint union).
