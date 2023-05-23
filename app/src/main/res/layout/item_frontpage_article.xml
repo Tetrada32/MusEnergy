@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="presenter"
+            type="com.gahov.musenergy.feature.frontpage.presenter.FrontpagePresenter" />
+
+        <variable
+            name="article"
+            type="com.gahov.domain.entities.news.ArticleEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/frontpageArticleParent"
+            style="@style/Widget.MusEnergy.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/grid_25"
+            android:layout_marginBottom="@dimen/grid_80"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/frontpageArticleImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:contentDescription="@null"
+                    android:importantForAccessibility="no"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintDimensionRatio="H,27:34"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RelativeLayout
+                    android:id="@+id/frontpageArticleBottomBlock"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:importantForAccessibility="no"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/frontpageArticleImage" />
+
+                <TextView
+                    android:id="@+id/frontpageArticleSubtitle"
+                    style="@style/TextAppearance.MusEnergy.Text.Small2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_25"
+                    android:layout_marginTop="@dimen/grid_16"
+                    android:text="@{article.source.name}"
+                    android:textColor="@color/bluegrey_60"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frontpageArticleImage"
+                    tools:text="Short article" />
+
+                <TextView
+                    android:id="@+id/frontpageArticleTitle"
+                    style="@style/TextAppearance.MusEnergy.Headline4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/grid_25"
+                    android:layout_marginTop="@dimen/grid_5"
+                    android:text="@{article.title}"
+                    app:layout_constraintBottom_toTopOf="@id/frontpageArticleAllButton"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frontpageArticleSubtitle"
+                    tools:text="This is the best news!" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/frontpageArticleAllButton"
+                    style="@style/Widget.MusEnergy.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/grid_25"
+                    android:layout_marginTop="@dimen/grid_20"
+                    android:layout_marginBottom="@dimen/grid_35"
+                    android:contentDescription="@null"
+                    android:importantForAccessibility="no"
+                    android:onClick="@{() -> presenter.onArticleClick(article.url)}"
+                    android:text="@string/read_more"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frontpageArticleTitle" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

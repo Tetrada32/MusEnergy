@@ -2,6 +2,7 @@ package com.gahov.musenergy.arch.ui.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -95,9 +96,24 @@ abstract class BaseFragment<B : ViewDataBinding, T : ViewModel>(
     protected open fun setBaseObservers() {
         getCurrentViewModel()?.let {
             it.errorEvent.observe(viewLifecycleOwner, ::displayError)
-            it.navigationCommand.observe(viewLifecycleOwner, ::navigate)
+            it.command.observe(viewLifecycleOwner, ::handleCommandData)
             it.message.observe(viewLifecycleOwner, ::showMessage)
         }
+    }
+
+    protected open fun handleCommandData(command: Command) {
+        when (command) {
+            is NavDirection -> router.navigate(command)
+            Command.Back -> router.popBackStack()
+            Command.Root -> router.popToRoot()
+            Command.Close -> requireActivity().finish()
+            is Command.FeatureCommand -> handleFeatureCommand(command)
+            is Command.Route -> commandError(command)
+        }
+    }
+
+    protected open fun handleFeatureCommand(command: Command.FeatureCommand) {
+        Log.w("WARN", "method navigateByFeature isn't implement for $command")
     }
 
     protected open fun navigateByFeature(command: Command.FeatureCommand) {
@@ -123,7 +139,7 @@ abstract class BaseFragment<B : ViewDataBinding, T : ViewModel>(
     protected open fun setObservers() {}
 
     protected open fun getCurrentViewModel(): BaseViewModel? {
-        return null
+        return viewModel as? BaseViewModel
     }
 
     override fun displayError(failure: Failure) {

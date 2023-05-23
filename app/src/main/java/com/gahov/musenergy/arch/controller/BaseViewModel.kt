@@ -32,6 +32,10 @@ abstract class BaseViewModel : ViewModel(), Controller, CoroutineProvider {
     val errorEvent: LiveData<Failure>
         get() = _errorEvent
 
+    private val _command by lazy { SingleLiveEvent<Command>() }
+    val command: LiveData<Command>
+        get() = _command
+
     private val _isLoading by lazy { MutableLiveData(false) }
     val isLoading: LiveData<Boolean>
         get() = _isLoading
@@ -39,6 +43,10 @@ abstract class BaseViewModel : ViewModel(), Controller, CoroutineProvider {
     private val _navigationCommand by lazy { SingleLiveEvent<Command>() }
     val navigationCommand: LiveData<Command>
         get() = _navigationCommand
+
+    open fun handleCommand(command: Command) {
+        _command.postValue(command)
+    }
 
     fun launch(block: suspend CoroutineScope.() -> Unit) = launcher.launch(block = block)
 

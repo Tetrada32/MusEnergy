@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="grid_5">5dp</dimen>
+    <dimen name="grid_8">8dp</dimen>
+    <dimen name="grid_16">16dp</dimen>
+    <dimen name="grid_20">20dp</dimen>
+    <dimen name="grid_25">25dp</dimen>
+    <dimen name="grid_30">30dp</dimen>
+    <dimen name="grid_35">35dp</dimen>
+    <dimen name="grid_50">50dp</dimen>
+    <dimen name="grid_80">80dp</dimen>
+
+    <dimen name="text_size_h1">36sp</dimen>
+    <dimen name="text_size_h2">33sp</dimen>
+    <dimen name="text_size_h3">30sp</dimen>
+    <dimen name="text_size_h4">27sp</dimen>
+    <dimen name="text_size_h5">24sp</dimen>
+    <dimen name="text_size_h6">22sp</dimen>
+    <dimen name="text_size_lead_1">24sp</dimen>
+    <dimen name="text_size_lead_2">22sp</dimen>
+    <dimen name="text_size_paragraph">20sp</dimen>
+    <dimen name="text_size_small_1">18sp</dimen>
+    <dimen name="text_size_small_2">16sp</dimen>
+    <dimen name="text_size_small_3">14sp</dimen>
+    <dimen name="text_size_small_4">12sp</dimen>
+</resources>

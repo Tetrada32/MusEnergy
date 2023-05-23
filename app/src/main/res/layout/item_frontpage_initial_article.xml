@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="presenter"
+            type="com.gahov.musenergy.feature.frontpage.presenter.FrontpagePresenter" />
+
+        <variable
+            name="article"
+            type="com.gahov.domain.entities.news.ArticleEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/frontpageInitialArticleParent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/grid_80"
+            app:cardBackgroundColor="@color/grey_100"
+            app:cardElevation="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/grid_30">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/frontpageInitialArticleBannerContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    app:layout_constraintDimensionRatio="H,4:5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/frontpageInitialArticleImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="500dp"
+                        android:contentDescription="@null"
+                        android:importantForAccessibility="no"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="H,4:5"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/frontpageWhiteBackground"
+                    android:layout_width="wrap_content"
+                    android:layout_height="180dp"
+                    android:background="@color/grey_100"
+                    app:layout_constraintEnd_toEndOf="@+id/frontpageInitialArticleBannerContainer"
+                    app:layout_constraintStart_toStartOf="@+id/frontpageInitialArticleBannerContainer"
+                    app:layout_constraintTop_toBottomOf="@id/frontpageInitialArticleBannerContainer" />
+
+                <TextView
+                    android:id="@+id/frontpageCollectionSubtitle"
+                    style="@style/TextAppearance.MusEnergy.Text.Small2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/grid_25"
+                    android:layout_marginTop="@dimen/grid_16"
+                    android:text="@{article.source.name}"
+                    android:textColor="@color/bluegrey_60"
+                    app:layout_constraintBottom_toTopOf="@id/frontpageCollectionTitle"
+                    app:layout_constraintStart_toStartOf="@+id/frontpageInitialArticleBannerContainer"
+                    app:layout_constraintTop_toBottomOf="@id/frontpageInitialArticleBannerContainer"
+                    tools:text="Subtitle" />
+
+                <TextView
+                    android:id="@+id/frontpageCollectionTitle"
+                    style="@style/TextAppearance.MusEnergy.Headline4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/grid_25"
+                    android:layout_marginTop="@dimen/grid_5"
+                    android:layout_marginBottom="@dimen/grid_5"
+                    android:text="@{article.title}"
+                    app:layout_constraintBottom_toTopOf="@id/frontpageCollectionAllButton"
+                    app:layout_constraintEnd_toEndOf="@+id/frontpageInitialArticleBannerContainer"
+                    app:layout_constraintStart_toStartOf="@+id/frontpageInitialArticleBannerContainer"
+                    app:layout_constraintTop_toBottomOf="@id/frontpageCollectionSubtitle"
+                    tools:text="TOP Inital News Article! " />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/frontpageCollectionAllButton"
+                    style="@style/Widget.MusEnergy.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/grid_25"
+                    android:layout_marginBottom="@dimen/grid_5"
+                    android:contentDescription="@null"
+                    android:importantForAccessibility="no"
+                    android:onClick="@{() -> presenter.onArticleClick(article.url)}"
+                    android:text="@string/read_more"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frontpageCollectionTitle" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

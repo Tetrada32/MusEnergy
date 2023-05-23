@@ -5,17 +5,22 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.AsyncDifferConfig
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 
-@SuppressWarnings(value = ["unused"])
-abstract class BaseRecyclerAdapter<T : Any>(open var items: List<T> = arrayListOf()) :
-    RecyclerView.Adapter<BaseViewHolder<T, out ViewDataBinding>>() {
+abstract class BaseRecyclerListAdapter<T : Any> :
+    ListAdapter<T, BaseViewHolder<T, out ViewDataBinding>> {
 
-    fun getItem(position: Int): T {
-        return items[position]
-    }
+    var items: List<T> = arrayListOf()
+        set(value) {
+            field = value
+            submitList(value)
+        }
 
-    override fun getItemCount() = items.size
+    constructor(diffCallback: DiffUtil.ItemCallback<T>) : super(diffCallback)
+
+    constructor(config: AsyncDifferConfig<T>) : super(config)
 
     protected fun inflate(parent: ViewGroup, @LayoutRes contentLayoutID: Int): ViewDataBinding {
         return DataBindingUtil.inflate(

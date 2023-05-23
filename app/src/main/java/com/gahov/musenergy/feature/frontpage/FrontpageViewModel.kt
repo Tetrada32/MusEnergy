@@ -5,13 +5,15 @@ import com.gahov.domain.usecase.news.frontpage.LoadFrontpageUseCase
 import com.gahov.musenergy.arch.controller.BaseViewModel
 import com.gahov.musenergy.data.local.entities.TokenData
 import com.gahov.musenergy.data.remote.configuration.interceptor.utils.token.TokenProvider
+import com.gahov.musenergy.feature.frontpage.command.FrontpageCommand
+import com.gahov.musenergy.feature.frontpage.presenter.FrontpagePresenter
 import javax.inject.Inject
 
 class FrontpageViewModel @Inject constructor(
     private val loadFrontpageUseCase: LoadFrontpageUseCase,
     private val logger: com.gahov.domain.component.logger.Logger,
     private val tokenProvider: TokenProvider
-) : BaseViewModel() {
+) : BaseViewModel(), FrontpagePresenter {
 
     companion object {
         const val API_TOKEN = "fe7411ed99314e8e9200167d8cde676f"
@@ -33,8 +35,12 @@ class FrontpageViewModel @Inject constructor(
 
     private suspend fun loadFrontpageContent() {
         when (val result = loadFrontpageUseCase.execute(param = null)) {
-            is Either.Right -> logger.log(message = "Success: \n ${message.value}")
+            is Either.Right -> handleCommand(FrontpageCommand.DisplayContent(content = result.success))
             is Either.Left -> logger.log(message = "Failure: \n ${result.failure}")
         }
+    }
+
+    override fun onArticleClick(link: String?) {
+        TODO("Not yet implemented")
     }
 }
