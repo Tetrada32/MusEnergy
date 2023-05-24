@@ -9,5 +9,26 @@
     <fragment
         android:id="@+id/fragment_frontpage"
         android:name="com.gahov.musenergy.feature.frontpage.FrontpageFragment"
-        tools:layout="@layout/fragment_frontpage" />
+        tools:layout="@layout/fragment_frontpage">
+
+        <action
+            android:id="@+id/action_frontpage_to_article_details"
+            app:destination="@id/fragment_article_details"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/dialog_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/fragment_frontpage" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_article_details"
+        android:name="com.gahov.musenergy.feature.articles.ArticleDetailsFragment"
+        tools:layout="@layout/fragment_article_details">
+
+        <argument
+            android:name="article"
+            app:argType="com.gahov.domain.entities.news.ArticleEntity"
+            app:nullable="false" />
+    </fragment>
 </navigation>

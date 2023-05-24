@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="article"
+            type="com.gahov.domain.entities.news.ArticleEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/articleDetailsParent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/articleDetailsImage"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:contentDescription="@null"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="H,4:5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/articleDetailsWhiteBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:background="@color/grey_100"
+            app:layout_constraintEnd_toEndOf="@+id/articleDetailsImage"
+            app:layout_constraintStart_toStartOf="@+id/articleDetailsImage"
+            app:layout_constraintTop_toBottomOf="@id/articleDetailsImage" />
+
+        <TextView
+            android:id="@+id/articleDetailsSubtitle"
+            style="@style/TextAppearance.MusEnergy.Text.Small2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/grid_25"
+            android:layout_marginTop="@dimen/grid_16"
+            android:text="@{article.sourceName}"
+            android:textColor="@color/bluegrey_60"
+            app:layout_constraintBottom_toTopOf="@id/articleDetailsTitle"
+            app:layout_constraintStart_toStartOf="@+id/articleDetailsImage"
+            app:layout_constraintTop_toBottomOf="@id/articleDetailsImage"
+            tools:text="Subtitle" />
+
+        <TextView
+            android:id="@+id/articleDetailsTitle"
+            style="@style/TextAppearance.MusEnergy.Headline4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/grid_25"
+            android:layout_marginTop="@dimen/grid_5"
+            android:layout_marginBottom="@dimen/grid_5"
+            android:text="@{article.title}"
+            app:layout_constraintBottom_toTopOf="@id/articleDetailsAllButton"
+            app:layout_constraintEnd_toEndOf="@+id/articleDetailsImage"
+            app:layout_constraintStart_toStartOf="@+id/articleDetailsImage"
+            app:layout_constraintTop_toBottomOf="@id/articleDetailsSubtitle"
+            tools:text="TOP Inital News Article! " />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/articleDetailsAllButton"
+            style="@style/Widget.MusEnergy.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/grid_25"
+            android:layout_marginBottom="@dimen/grid_5"
+            android:contentDescription="@null"
+            android:importantForAccessibility="no"
+            android:text="@string/read_more"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/articleDetailsTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

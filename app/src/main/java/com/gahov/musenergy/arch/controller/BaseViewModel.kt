@@ -62,8 +62,8 @@ abstract class BaseViewModel : ViewModel(), Controller, CoroutineProvider {
         _navigationCommand.value = command
     }
 
-    fun navigate(directions: NavDirections) {
-        navigate(NavDirection.Direction(directions))
+    fun navigateDirection(directions: NavDirections) {
+        handleCommand(NavDirection.Direction(directions))
     }
 
     override fun handleFailure(failure: Failure) {

@@ -16,7 +16,7 @@ class FrontpageAdapter(
 
     companion object {
         private const val VIEW_TYPE_INITIAL_ARTICLE = 0
-        private const val VIEW_TYPE_DEFAULT_ARTICLE = 0
+        private const val VIEW_TYPE_DEFAULT_ARTICLE = 1
     }
 
     override fun onCreateViewHolder(

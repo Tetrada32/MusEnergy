@@ -9,6 +9,9 @@
     <dimen name="grid_35">35dp</dimen>
     <dimen name="grid_50">50dp</dimen>
     <dimen name="grid_80">80dp</dimen>
+    <dimen name="grid_100">100dp</dimen>
+    <dimen name="grid_200">200dp</dimen>
+    <dimen name="grid_500">500dp</dimen>
 
     <dimen name="text_size_h1">36sp</dimen>
     <dimen name="text_size_h2">33sp</dimen>

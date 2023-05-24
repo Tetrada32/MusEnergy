@@ -1,6 +1,7 @@
 package com.gahov.musenergy.feature.frontpage
 
 import com.gahov.domain.entities.common.Either
+import com.gahov.domain.entities.news.ArticleEntity
 import com.gahov.domain.usecase.news.frontpage.LoadFrontpageUseCase
 import com.gahov.musenergy.arch.controller.BaseViewModel
 import com.gahov.musenergy.data.local.entities.TokenData
@@ -40,7 +41,7 @@ class FrontpageViewModel @Inject constructor(
         }
     }
 
-    override fun onArticleClick(link: String?) {
-        TODO("Not yet implemented")
+    override fun onArticleClick(article: ArticleEntity) {
+        navigateDirection(FrontpageFragmentDirections.actionFrontpageToArticleDetails(article))
     }
 }
