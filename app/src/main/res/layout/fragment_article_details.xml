@@ -12,73 +12,102 @@
             type="com.gahov.domain.entities.news.ArticleEntity" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/articleDetailsParent"
+    <ScrollView
+        android:id="@+id/articleDetailsScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/articleDetailsImage"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:contentDescription="@null"
-            android:importantForAccessibility="no"
-            android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="H,4:5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/articleDetailsWhiteBackground"
-            android:layout_width="wrap_content"
-            android:layout_height="180dp"
-            android:background="@color/grey_100"
-            app:layout_constraintEnd_toEndOf="@+id/articleDetailsImage"
-            app:layout_constraintStart_toStartOf="@+id/articleDetailsImage"
-            app:layout_constraintTop_toBottomOf="@id/articleDetailsImage" />
-
-        <TextView
-            android:id="@+id/articleDetailsSubtitle"
-            style="@style/TextAppearance.MusEnergy.Text.Small2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/grid_25"
-            android:layout_marginTop="@dimen/grid_16"
-            android:text="@{article.sourceName}"
-            android:textColor="@color/bluegrey_60"
-            app:layout_constraintBottom_toTopOf="@id/articleDetailsTitle"
-            app:layout_constraintStart_toStartOf="@+id/articleDetailsImage"
-            app:layout_constraintTop_toBottomOf="@id/articleDetailsImage"
-            tools:text="Subtitle" />
-
-        <TextView
-            android:id="@+id/articleDetailsTitle"
-            style="@style/TextAppearance.MusEnergy.Headline4"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/articleDetailsParent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/grid_25"
-            android:layout_marginTop="@dimen/grid_5"
-            android:layout_marginBottom="@dimen/grid_5"
-            android:text="@{article.title}"
-            app:layout_constraintBottom_toTopOf="@id/articleDetailsAllButton"
-            app:layout_constraintEnd_toEndOf="@+id/articleDetailsImage"
-            app:layout_constraintStart_toStartOf="@+id/articleDetailsImage"
-            app:layout_constraintTop_toBottomOf="@id/articleDetailsSubtitle"
-            tools:text="TOP Inital News Article! " />
+            android:paddingBottom="@dimen/grid_25">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/articleDetailsAllButton"
-            style="@style/Widget.MusEnergy.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/grid_25"
-            android:layout_marginBottom="@dimen/grid_5"
-            android:contentDescription="@null"
-            android:importantForAccessibility="no"
-            android:text="@string/read_more"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/articleDetailsTitle" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/articleDetailsTitle"
+                style="@style/TextAppearance.MusEnergy.Headline2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/grid_16"
+                android:layout_marginTop="@dimen/grid_25"
+                android:layout_marginBottom="@dimen/grid_5"
+                android:text="@{article.title}"
+                app:layout_constraintBottom_toTopOf="@+id/articleDetailsSourceName"
+                app:layout_constraintEnd_toEndOf="@+id/articleDetailsImage"
+                app:layout_constraintStart_toStartOf="@+id/articleDetailsImage"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="TOP Inital News Article! " />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/articleDetailsSourceName"
+                style="@style/TextAppearance.MusEnergy.Text.Small1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/grid_16"
+                android:layout_marginTop="@dimen/grid_8"
+                android:text="@{article.sourceName}"
+                android:textColor="@color/bluegrey_60"
+                app:layout_constraintStart_toStartOf="@+id/articleDetailsImage"
+                app:layout_constraintTop_toBottomOf="@id/articleDetailsTitle"
+                tools:text="Source name" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/articleDetailsImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/grid_500"
+                android:layout_marginTop="@dimen/grid_16"
+                android:contentDescription="@null"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="H,4:5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/articleDetailsSourceName" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/articleDetailsText"
+                style="@style/TextAppearance.MusEnergy.Text.Small1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/grid_16"
+                android:layout_marginTop="@dimen/grid_16"
+                android:text="@{article.description}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/articleDetailsImage"
+                tools:text="Lorem ipsum! This is description of an article details!" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/articleDetailsAuthorName"
+                style="@style/TextAppearance.MusEnergy.Text.Small3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/grid_35"
+                android:layout_marginTop="@dimen/grid_16"
+                android:gravity="end"
+                android:text="@{article.author}"
+                app:layout_constraintBottom_toTopOf="@id/articleDetailsAllButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/articleDetailsText"
+                tools:text="John Deer" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/articleDetailsAllButton"
+                style="@style/Widget.MusEnergy.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/grid_16"
+                android:layout_marginTop="@dimen/grid_25"
+                android:layout_marginBottom="@dimen/grid_5"
+                android:contentDescription="@null"
+                android:importantForAccessibility="no"
+                android:text="@string/go_to_the_source"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/articleDetailsAuthorName" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

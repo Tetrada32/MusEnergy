@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.navArgs
 import com.gahov.musenergy.R
+import com.gahov.musenergy.arch.component.coil.loadImage
 import com.gahov.musenergy.arch.ui.fragment.BaseFragment
 import com.gahov.musenergy.databinding.FragmentArticleDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,5 +21,6 @@ class ArticleDetailsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.article = args.article
+        binding.articleDetailsImage.loadImage(args.article.urlToImage)
     }
 }
