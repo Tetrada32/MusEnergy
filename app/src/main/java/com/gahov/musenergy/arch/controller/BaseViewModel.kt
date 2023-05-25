@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavDirections
-import com.gahov.architecture.core.ui.view.model.TextProvider
+import com.gahov.musenergy.arch.ui.view.model.TextProvider
 import com.gahov.domain.entities.failure.Failure
 import com.gahov.musenergy.arch.coroutine.CoroutineLauncher
 import com.gahov.musenergy.arch.coroutine.impl.DefaultCoroutineLauncher

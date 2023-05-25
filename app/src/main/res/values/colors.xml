@@ -23,4 +23,7 @@
     <color name="grey_40">#666666</color>
     <color name="grey_80">#cccccc</color>
     <color name="grey_100">#ffffff</color>
+
+    <color name="redesign_search_tile_back_bg">#33000000</color>
+    <color name="redesign_search_tile_front_bg">#08000000</color>
 </resources>

@@ -1,7 +1,7 @@
 package com.gahov.musenergy.arch.ktx
 
 import android.content.Context
-import com.gahov.architecture.core.ui.view.model.TextProvider
+import com.gahov.musenergy.arch.ui.view.model.TextProvider
 
 fun TextProvider.getString(context: Context) = when (this) {
     is TextProvider.Text -> text

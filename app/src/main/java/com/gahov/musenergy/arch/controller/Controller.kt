@@ -1,7 +1,7 @@
 package com.gahov.musenergy.arch.controller
 
 import com.gahov.musenergy.arch.router.command.Command
-import com.gahov.architecture.core.ui.view.model.TextProvider
+import com.gahov.musenergy.arch.ui.view.model.TextProvider
 import com.gahov.domain.entities.failure.Failure
 
 interface Controller {

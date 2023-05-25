@@ -11,7 +11,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.gahov.musenergy.arch.ui.view.BaseView
-import com.gahov.architecture.core.ui.view.model.TextProvider
+import com.gahov.musenergy.arch.ui.view.model.TextProvider
 import com.gahov.domain.component.logger.Level
 import com.gahov.domain.component.logger.Logger
 import com.gahov.domain.entities.failure.Failure

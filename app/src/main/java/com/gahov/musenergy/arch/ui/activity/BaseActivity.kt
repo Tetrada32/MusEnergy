@@ -10,7 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import com.gahov.musenergy.arch.ui.view.BaseView
-import com.gahov.architecture.core.ui.view.model.TextProvider
+import com.gahov.musenergy.arch.ui.view.model.TextProvider
 import com.gahov.domain.component.logger.Level
 import com.gahov.domain.component.logger.Logger
 import com.gahov.domain.entities.failure.Failure
@@ -24,6 +24,7 @@ import com.gahov.musenergy.arch.router.NavComponentRouter
 import com.gahov.musenergy.arch.router.Router
 import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.router.command.NavDirection
+import javax.inject.Inject
 
 abstract class BaseActivity<T : ViewDataBinding>(
     @LayoutRes private val contentLayoutID: Int
@@ -34,12 +35,10 @@ abstract class BaseActivity<T : ViewDataBinding>(
 
     protected abstract val navController: NavController
 
-    //TODO
-//    private val logger: Logger by inject { parametersOf(this) }
+    @Inject
     private lateinit var logger: Logger
 
-    //TODO
-//    protected open val failureHandler: ErrorHandler by inject()
+    @Inject
     private lateinit var failureHandler: ErrorHandler
 
     override val router: Router by lazy {

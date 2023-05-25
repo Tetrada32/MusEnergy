@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.gahov.musenergy.feature.search.presenter.SearchPresenter" />
+
+        <variable
+            name="model"
+            type="com.gahov.musenergy.feature.search.adapter.model.SearchSectionModel.SearchCategorySection" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchCategoryCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{() -> presenter.onSearchCategoryPressed(model)}"
+        app:cardCornerRadius="@dimen/grid_16"
+        app:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/searchCategoryContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/searchCategoryLogo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:foreground="@drawable/bg_search_tile_gradient"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="H,3:2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setImage="@{model.sectionImageId}"
+                tools:src="@drawable/stock_rock_image" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/searchCategoryTitle"
+                style="@style/TextAppearance.MusEnergy.Text.Small4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/grid_6"
+                android:drawablePadding="@dimen/grid_5"
+                android:ellipsize="end"
+                android:fontFamily="@font/circular_xx_bold"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="@dimen/grid_10"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:drawableTint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:setText="@{model.sectionText}"
+                tools:text="@tools:sample/lorem[2]" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

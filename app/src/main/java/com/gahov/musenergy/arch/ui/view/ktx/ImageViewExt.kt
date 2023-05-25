@@ -2,9 +2,16 @@ package com.gahov.musenergy.arch.ui.view.ktx
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.gahov.architecture.core.ui.view.model.IconProvider
+import com.gahov.musenergy.arch.component.coil.loadImage
+import com.gahov.musenergy.arch.ui.view.model.IconProvider
 
 @BindingAdapter("setImage")
 fun ImageView.setImage(iconProvider: IconProvider?) {
-//TODO
+    when (iconProvider) {
+        is IconProvider.Drawable -> loadImage(iconProvider.icon)
+        is IconProvider.Url -> loadImage(iconProvider.url)
+        is IconProvider.ResIcon -> loadImage(iconProvider.icon)
+        is IconProvider.ResVectorIcon -> loadImage(iconProvider.icon)
+        else -> setImageDrawable(null)
+    }
 }

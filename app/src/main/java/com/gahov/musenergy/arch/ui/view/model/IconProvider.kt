@@ -1,4 +1,4 @@
-package com.gahov.architecture.core.ui.view.model
+package com.gahov.musenergy.arch.ui.view.model
 
 import androidx.annotation.DrawableRes
 import android.graphics.drawable.Drawable as AndroidDrawable
