@@ -23,12 +23,12 @@
 
     <fragment
         android:id="@+id/fragment_article_details"
-        android:name="com.gahov.musenergy.feature.articles.ArticleDetailsFragment"
+        android:name="com.gahov.musenergy.feature.articles.details.ArticleDetailsFragment"
         tools:layout="@layout/fragment_article_details">
 
         <argument
             android:name="article"
-            app:argType="com.gahov.domain.entities.news.ArticleEntity"
+            app:argType="com.gahov.musenergy.feature.articles.model.ArticleModel"
             app:nullable="false" />
     </fragment>
 </navigation>

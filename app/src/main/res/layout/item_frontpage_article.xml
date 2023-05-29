@@ -13,7 +13,7 @@
 
         <variable
             name="article"
-            type="com.gahov.domain.entities.news.ArticleEntity" />
+            type="com.gahov.musenergy.feature.articles.model.ArticleModel.DefaultArticle" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/frontpageArticleImage"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -48,7 +48,8 @@
                     app:layout_constraintDimensionRatio="H,27:32"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:setImage="@{article.image}" />
 
                 <RelativeLayout
                     android:id="@+id/frontpageArticleBottomBlock"
@@ -60,32 +61,32 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/frontpageArticleImage" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/frontpageArticleSubtitle"
                     style="@style/TextAppearance.MusEnergy.Text.Small2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/grid_25"
                     android:layout_marginTop="@dimen/grid_16"
-                    android:text="@{article.sourceName}"
                     android:textColor="@color/bluegrey_60"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/frontpageArticleImage"
+                    app:setText="@{article.sourceName}"
                     tools:text="Short article" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/frontpageArticleTitle"
                     style="@style/TextAppearance.MusEnergy.Headline4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/grid_25"
                     android:layout_marginTop="@dimen/grid_5"
-                    android:text="@{article.title}"
                     app:layout_constraintBottom_toTopOf="@id/frontpageArticleAllButton"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/frontpageArticleSubtitle"
+                    app:setText="@{article.title}"
                     tools:text="This is the best news!" />
 
                 <com.google.android.material.button.MaterialButton

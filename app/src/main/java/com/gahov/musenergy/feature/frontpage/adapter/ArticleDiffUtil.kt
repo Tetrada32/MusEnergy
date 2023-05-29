@@ -1,19 +1,15 @@
 package com.gahov.musenergy.feature.frontpage.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.gahov.domain.entities.news.ArticleEntity
+import com.gahov.musenergy.feature.articles.model.ArticleModel
 
-class ArticleDiffUtil : DiffUtil.ItemCallback<ArticleEntity>() {
+class ArticleDiffUtil : DiffUtil.ItemCallback<ArticleModel>() {
 
-    override fun areItemsTheSame(oldItem: ArticleEntity, newItem: ArticleEntity): Boolean {
+    override fun areItemsTheSame(oldItem: ArticleModel, newItem: ArticleModel): Boolean {
         return oldItem.areItemsSame(newItem)
     }
 
-    override fun areContentsTheSame(oldItem: ArticleEntity, newItem: ArticleEntity): Boolean {
+    override fun areContentsTheSame(oldItem: ArticleModel, newItem: ArticleModel): Boolean {
         return oldItem == newItem
-    }
-
-    private fun ArticleEntity.areItemsSame(newItem: ArticleEntity): Boolean {
-        return this.title.equals(newItem.title)
     }
 }

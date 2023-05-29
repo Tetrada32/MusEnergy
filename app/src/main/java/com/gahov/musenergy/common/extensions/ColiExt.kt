@@ -1,4 +1,4 @@
-package com.gahov.musenergy.arch.component.coil
+package com.gahov.musenergy.common.extensions
 
 import android.content.Context
 import android.graphics.drawable.Drawable

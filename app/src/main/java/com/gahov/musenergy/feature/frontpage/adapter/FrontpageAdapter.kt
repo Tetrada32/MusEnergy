@@ -2,17 +2,17 @@ package com.gahov.musenergy.feature.frontpage.adapter
 
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
-import com.gahov.domain.entities.news.ArticleEntity
 import com.gahov.musenergy.R
 import com.gahov.musenergy.arch.ui.recycler.BaseRecyclerListAdapter
 import com.gahov.musenergy.arch.ui.recycler.BaseViewHolder
+import com.gahov.musenergy.feature.articles.model.ArticleModel
 import com.gahov.musenergy.feature.frontpage.adapter.viewholder.ArticleViewHolder
-import com.gahov.musenergy.feature.frontpage.adapter.viewholder.InitalArticleViewHolder
+import com.gahov.musenergy.feature.frontpage.adapter.viewholder.InitialArticleViewHolder
 import com.gahov.musenergy.feature.frontpage.presenter.FrontpagePresenter
 
 class FrontpageAdapter(
     private val presenter: FrontpagePresenter
-) : BaseRecyclerListAdapter<ArticleEntity>(ArticleDiffUtil()) {
+) : BaseRecyclerListAdapter<ArticleModel>(ArticleDiffUtil()) {
 
     companion object {
         private const val VIEW_TYPE_INITIAL_ARTICLE = 0
@@ -22,9 +22,9 @@ class FrontpageAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BaseViewHolder<ArticleEntity, out ViewDataBinding> {
+    ): BaseViewHolder<ArticleModel, out ViewDataBinding> {
         return when (viewType) {
-            VIEW_TYPE_INITIAL_ARTICLE -> InitalArticleViewHolder(
+            VIEW_TYPE_INITIAL_ARTICLE -> InitialArticleViewHolder(
                 presenter = presenter,
                 binding = inflate(parent, R.layout.item_frontpage_initial_article)
             )

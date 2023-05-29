@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.gahov.musenergy.arch.di.ViewModelFactory
 import com.gahov.musenergy.arch.di.ViewModelKey
-import com.gahov.musenergy.feature.articles.ArticleDetailsViewModel
+import com.gahov.musenergy.feature.articles.details.ArticleDetailsViewModel
 import com.gahov.musenergy.feature.favorites.FavoritesViewModel
 import com.gahov.musenergy.feature.frontpage.FrontpageViewModel
 import com.gahov.musenergy.feature.profile.ProfileViewModel

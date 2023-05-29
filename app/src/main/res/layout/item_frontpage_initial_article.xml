@@ -13,7 +13,7 @@
 
         <variable
             name="article"
-            type="com.gahov.domain.entities.news.ArticleEntity" />
+            type="com.gahov.musenergy.feature.articles.model.ArticleModel.DefaultArticle" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +44,8 @@
                     app:layout_constraintDimensionRatio="H,4:5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:setImage="@{article.image}" />
 
                 <View
                     android:id="@+id/frontpageWhiteBackground"
@@ -62,11 +63,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/grid_25"
                     android:layout_marginTop="@dimen/grid_16"
-                    android:text="@{article.sourceName}"
                     android:textColor="@color/bluegrey_60"
                     app:layout_constraintBottom_toTopOf="@id/frontpageCollectionTitle"
                     app:layout_constraintStart_toStartOf="@+id/frontpageInitialArticleImage"
                     app:layout_constraintTop_toBottomOf="@id/frontpageInitialArticleImage"
+                    app:setText="@{article.sourceName}"
                     tools:text="Subtitle" />
 
                 <TextView
@@ -77,11 +78,11 @@
                     android:layout_marginHorizontal="@dimen/grid_25"
                     android:layout_marginTop="@dimen/grid_5"
                     android:layout_marginBottom="@dimen/grid_5"
-                    android:text="@{article.title}"
                     app:layout_constraintBottom_toTopOf="@id/frontpageCollectionAllButton"
                     app:layout_constraintEnd_toEndOf="@+id/frontpageInitialArticleImage"
                     app:layout_constraintStart_toStartOf="@+id/frontpageInitialArticleImage"
                     app:layout_constraintTop_toBottomOf="@id/frontpageCollectionSubtitle"
+                    app:setText="@{article.title}"
                     tools:text="TOP Inital News Article! " />
 
                 <com.google.android.material.button.MaterialButton

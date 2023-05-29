@@ -2,7 +2,7 @@ package com.gahov.musenergy.arch.ui.view.ktx
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.gahov.musenergy.arch.component.coil.loadImage
+import com.gahov.musenergy.common.extensions.loadImage
 import com.gahov.musenergy.arch.ui.view.model.IconProvider
 
 @BindingAdapter("setImage")

@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.gahov.domain.entities.news.ArticleEntity
 import com.gahov.musenergy.R
 import com.gahov.musenergy.arch.ktx.hideKeyboard
 import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.ui.fragment.BaseFragment
 import com.gahov.musenergy.databinding.FragmentFrontpageBinding
+import com.gahov.musenergy.feature.articles.model.ArticleModel
 import com.gahov.musenergy.feature.frontpage.adapter.FrontpageAdapter
 import com.gahov.musenergy.feature.frontpage.command.FrontpageCommand
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,7 +51,7 @@ class FrontpageFragment :
         binding.frontpageRecycler.adapter = frontpageAdapter
     }
 
-    private fun displayContent(content: List<ArticleEntity>) {
+    private fun displayContent(content: List<ArticleModel>) {
         frontpageAdapter.items = content
     }
 

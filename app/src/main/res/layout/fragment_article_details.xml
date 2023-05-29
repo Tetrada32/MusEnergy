@@ -9,7 +9,7 @@
 
         <variable
             name="article"
-            type="com.gahov.domain.entities.news.ArticleEntity" />
+            type="com.gahov.musenergy.feature.articles.model.ArticleModel.DefaultArticle" />
     </data>
 
     <ScrollView
@@ -21,7 +21,7 @@
             android:id="@+id/articleDetailsParent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/grid_25">
+            android:paddingBottom="@dimen/grid_280">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/articleDetailsTitle"
@@ -31,11 +31,11 @@
                 android:layout_marginHorizontal="@dimen/grid_16"
                 android:layout_marginTop="@dimen/grid_25"
                 android:layout_marginBottom="@dimen/grid_5"
-                android:text="@{article.title}"
                 app:layout_constraintBottom_toTopOf="@+id/articleDetailsSourceName"
                 app:layout_constraintEnd_toEndOf="@+id/articleDetailsImage"
                 app:layout_constraintStart_toStartOf="@+id/articleDetailsImage"
                 app:layout_constraintTop_toTopOf="parent"
+                app:setText="@{article.title}"
                 tools:text="TOP Inital News Article! " />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -45,10 +45,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/grid_16"
                 android:layout_marginTop="@dimen/grid_8"
-                android:text="@{article.sourceName}"
                 android:textColor="@color/bluegrey_60"
                 app:layout_constraintStart_toStartOf="@+id/articleDetailsImage"
                 app:layout_constraintTop_toBottomOf="@id/articleDetailsTitle"
+                app:setText="@{article.sourceName}"
                 tools:text="Source name" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -62,7 +62,18 @@
                 app:layout_constraintDimensionRatio="H,4:5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/articleDetailsSourceName" />
+                app:layout_constraintTop_toBottomOf="@id/articleDetailsSourceName"
+                app:setImage="@{article.image}" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/articleShareIcon"
+                android:layout_width="@dimen/grid_35"
+                android:layout_height="@dimen/grid_35"
+                android:layout_marginEnd="@dimen/grid_25"
+                android:layout_marginTop="@dimen/grid_25"
+                android:src="@drawable/ic_share_24"
+                app:layout_constraintEnd_toEndOf="@id/articleDetailsImage"
+                app:layout_constraintTop_toTopOf="@id/articleDetailsImage" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/articleDetailsText"
@@ -71,10 +82,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/grid_16"
                 android:layout_marginTop="@dimen/grid_16"
-                android:text="@{article.description}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/articleDetailsImage"
+                app:setText="@{article.description}"
                 tools:text="Lorem ipsum! This is description of an article details!" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -85,11 +96,11 @@
                 android:layout_marginHorizontal="@dimen/grid_35"
                 android:layout_marginTop="@dimen/grid_16"
                 android:gravity="end"
-                android:text="@{article.author}"
                 app:layout_constraintBottom_toTopOf="@id/articleDetailsAllButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/articleDetailsText"
+                app:setText="@{article.author}"
                 tools:text="John Deer" />
 
             <com.google.android.material.button.MaterialButton
