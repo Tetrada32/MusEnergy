@@ -5,9 +5,12 @@ import android.view.View
 import androidx.navigation.fragment.navArgs
 import com.gahov.musenergy.R
 import com.gahov.musenergy.arch.ktx.getString
+import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.ui.fragment.BaseFragment
+import com.gahov.musenergy.arch.ui.view.model.TextProvider
 import com.gahov.musenergy.common.extensions.shareWithUrl
 import com.gahov.musenergy.databinding.FragmentArticleDetailsBinding
+import com.gahov.musenergy.feature.articles.details.command.ArticleDetailsCommand
 import com.gahov.musenergy.feature.articles.model.ArticleModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,15 +25,38 @@ class ArticleDetailsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupContent()
+    }
+
+    private fun setupContent() {
         val articleDetails = args.article as ArticleModel.DefaultArticle
+        binding.presenter = viewModel
         binding.article = articleDetails
-        binding.articleShareIcon.setOnClickListener {
-            requireContext().apply {
-                (shareWithUrl(
-                    text = getString(R.string.share_message),
-                    url = articleDetails.urlToSource.getString(this)
-                ))
+    }
+
+    override fun handleFeatureCommand(command: Command.FeatureCommand) {
+        with(command) {
+            if (this is ArticleDetailsCommand) {
+                when (this) {
+                    is ArticleDetailsCommand.OnOpenInBrowser -> openInBrowser(sourceUrl)
+                    is ArticleDetailsCommand.ShareArticle -> shareArticle(shareUrl)
+                }
+            } else {
+                super.handleFeatureCommand(command)
             }
         }
+    }
+
+    private fun shareArticle(url: TextProvider) {
+        requireContext().apply {
+            (shareWithUrl(
+                text = getString(R.string.share_message),
+                url = url.getString(this)
+            ))
+        }
+    }
+
+    private fun openInBrowser(url: TextProvider) {
+        //TODO implement feature!
     }
 }

@@ -8,6 +8,10 @@
         <import type="android.view.View" />
 
         <variable
+            name="presenter"
+            type="com.gahov.musenergy.feature.articles.details.presenter.ArticleDetailsPresenter" />
+
+        <variable
             name="article"
             type="com.gahov.musenergy.feature.articles.model.ArticleModel.DefaultArticle" />
     </data>
@@ -65,15 +69,19 @@
                 app:layout_constraintTop_toBottomOf="@id/articleDetailsSourceName"
                 app:setImage="@{article.image}" />
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/articleShareIcon"
-                android:layout_width="@dimen/grid_35"
-                android:layout_height="@dimen/grid_35"
-                android:layout_marginEnd="@dimen/grid_25"
+                style="@style/Widget.MusEnergy.Button.Share"
+                android:layout_width="@dimen/grid_40"
+                android:layout_height="@dimen/grid_40"
                 android:layout_marginTop="@dimen/grid_25"
-                android:src="@drawable/ic_share_24"
+                android:layout_marginEnd="@dimen/grid_25"
+                android:contentDescription="@null"
+                android:importantForAccessibility="no"
+                android:onClick="@{() -> presenter.onShareIconClick(article)}"
                 app:layout_constraintEnd_toEndOf="@id/articleDetailsImage"
-                app:layout_constraintTop_toTopOf="@id/articleDetailsImage" />
+                app:layout_constraintTop_toTopOf="@id/articleDetailsImage"
+                app:layout_marginTopSystemWindowInsets="@{true}" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/articleDetailsText"
@@ -113,6 +121,7 @@
                 android:layout_marginBottom="@dimen/grid_5"
                 android:contentDescription="@null"
                 android:importantForAccessibility="no"
+                android:onClick="@{() -> presenter.onOpenInBrowserClick(article)}"
                 android:text="@string/go_to_the_source"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

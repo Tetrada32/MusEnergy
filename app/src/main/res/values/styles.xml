@@ -122,6 +122,19 @@
         <item name="shapeAppearance">@style/ShapeAppearance.MusEnergy.RoundCorners</item>
     </style>
 
+    <style name="Widget.MusEnergy.Button.Share" parent="">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:background">@drawable/bg_rounded_button</item>
+        <item name="iconTint">@color/bluegrey_70</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">0dp</item>
+        <item name="icon">@drawable/ic_share</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="backgroundTint">@color/grey_100</item>
+    </style>
+
     <!-- Shapes -->
     <style name="ShapeAppearance.MusEnergy.RoundCorners" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">rounded</item>
