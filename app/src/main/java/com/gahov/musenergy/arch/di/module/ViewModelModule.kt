@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.gahov.musenergy.arch.di.ViewModelFactory
 import com.gahov.musenergy.arch.di.ViewModelKey
 import com.gahov.musenergy.feature.articles.details.ArticleDetailsViewModel
+import com.gahov.musenergy.feature.articles.list.ArticleListViewModel
 import com.gahov.musenergy.feature.favorites.FavoritesViewModel
 import com.gahov.musenergy.feature.frontpage.FrontpageViewModel
 import com.gahov.musenergy.feature.profile.ProfileViewModel
@@ -31,6 +32,11 @@ internal abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ArticleDetailsViewModel::class)
     abstract fun bindArticleDetailsViewModel(viewModel: ArticleDetailsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ArticleListViewModel::class)
+    abstract fun bindArticleListViewModel(viewModel: ArticleListViewModel): ViewModel
 
     @Binds
     @IntoMap

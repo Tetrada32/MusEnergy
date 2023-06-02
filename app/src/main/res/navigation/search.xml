@@ -5,9 +5,32 @@
     android:id="@+id/search"
     app:startDestination="@+id/fragment_search">
 
+    <include app:graph="@navigation/articles" />
 
     <fragment
         android:id="@+id/fragment_search"
         android:name="com.gahov.musenergy.feature.search.SearchFragment"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+
+        <argument
+            android:name="article"
+            app:argType="com.gahov.musenergy.feature.articles.model.ArticleModel"
+            app:nullable="false" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_search_to_article_list"
+        app:destination="@id/articles"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        app:popUpTo="@id/fragment_search">
+
+        <argument
+            android:name="category"
+            app:argType="com.gahov.domain.entities.search.SearchNewsCategory"
+            app:nullable="false" />
+
+    </action>
 </navigation>

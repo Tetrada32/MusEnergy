@@ -7,6 +7,6 @@ import retrofit2.http.*
 
 interface MainProtocol {
 
-    @GET("everything?q=music")
-    suspend fun getEverything(): Response<DefaultSuccessResponse>
+    @GET("everything")
+    suspend fun getNewsList(@Query("q") category: String): Response<DefaultSuccessResponse>
 }

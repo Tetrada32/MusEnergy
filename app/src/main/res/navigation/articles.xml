@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/articles"
+    app:startDestination="@+id/fragment_article_list">
+
+    <fragment
+        android:id="@+id/fragment_article_list"
+        android:name="com.gahov.musenergy.feature.articles.list.ArticleListFragment"
+        tools:layout="@layout/fragment_article_list">
+
+        <argument
+            android:name="category"
+            app:argType="com.gahov.domain.entities.search.SearchNewsCategory"
+            app:nullable="false" />
+    </fragment>
+</navigation>

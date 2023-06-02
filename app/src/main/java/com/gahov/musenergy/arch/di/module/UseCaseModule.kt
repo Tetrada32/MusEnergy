@@ -4,6 +4,7 @@ import com.gahov.domain.repository.news.NewsRepository
 import com.gahov.domain.repository.news.SearchCategoriesRepository
 import com.gahov.domain.usecase.news.categories.LoadSearchCategoriesUseCase
 import com.gahov.domain.usecase.news.frontpage.LoadFrontpageUseCase
+import com.gahov.domain.usecase.news.list.LoadArticleListUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,5 +29,14 @@ class UseCaseModule {
         searchCategoriesRepository: SearchCategoriesRepository
     ) = LoadSearchCategoriesUseCase(
         repository = searchCategoriesRepository
+    )
+
+
+    @Provides
+    @Singleton
+    internal fun provideLoadArticleListUseCase(
+        newsRepository: NewsRepository
+    ) = LoadArticleListUseCase(
+        repository = newsRepository
     )
 }

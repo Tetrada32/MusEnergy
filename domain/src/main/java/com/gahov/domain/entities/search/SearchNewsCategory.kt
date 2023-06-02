@@ -2,8 +2,8 @@ package com.gahov.domain.entities.search
 
 enum class SearchNewsCategory(
     val id: String,
-) {
-    CATEGORY_ALL("All"),
+) : java.io.Serializable {
+    CATEGORY_ALL("music"),
     CATEGORY_ROCK("Rock"),
     CATEGORY_CLASSIC("Classic"),
     CATEGORY_POP("Pop"),
