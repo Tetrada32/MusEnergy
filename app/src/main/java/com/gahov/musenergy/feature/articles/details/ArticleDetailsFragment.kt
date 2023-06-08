@@ -8,6 +8,7 @@ import com.gahov.musenergy.arch.ktx.getString
 import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.ui.fragment.BaseFragment
 import com.gahov.musenergy.arch.ui.view.model.TextProvider
+import com.gahov.musenergy.common.extensions.openInBrowser
 import com.gahov.musenergy.common.extensions.shareWithUrl
 import com.gahov.musenergy.databinding.FragmentArticleDetailsBinding
 import com.gahov.musenergy.feature.articles.details.command.ArticleDetailsCommand
@@ -57,6 +58,8 @@ class ArticleDetailsFragment :
     }
 
     private fun openInBrowser(url: TextProvider) {
-        //TODO implement feature!
+        requireContext().apply {
+            openInBrowser(url = url.getString(this))
+        }
     }
 }

@@ -2,7 +2,6 @@ package com.gahov.musenergy.feature.frontpage
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gahov.musenergy.R
 import com.gahov.musenergy.arch.ktx.hideKeyboard
@@ -35,8 +34,6 @@ class FrontpageFragment :
             if (this is FrontpageCommand) {
                 when (this) {
                     is FrontpageCommand.DisplayContent -> displayContent(content)
-                    is FrontpageCommand.OnReloadEvent -> {}
-                    is FrontpageCommand.OnOpenInBrowser -> {}
                     is FrontpageCommand.NetworkError -> {}
                     FrontpageCommand.HideKeyboard -> hideKeyboard()
                 }
