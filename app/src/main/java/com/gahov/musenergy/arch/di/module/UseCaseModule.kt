@@ -2,9 +2,11 @@ package com.gahov.musenergy.arch.di.module
 
 import com.gahov.domain.repository.news.NewsRepository
 import com.gahov.domain.repository.news.SearchCategoriesRepository
+import com.gahov.domain.repository.stories.StoriesRepository
 import com.gahov.domain.usecase.news.categories.LoadSearchCategoriesUseCase
 import com.gahov.domain.usecase.news.frontpage.LoadFrontpageUseCase
 import com.gahov.domain.usecase.news.list.LoadArticleListUseCase
+import com.gahov.domain.usecase.stories.LoadStoriesListUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,5 +40,13 @@ class UseCaseModule {
         newsRepository: NewsRepository
     ) = LoadArticleListUseCase(
         repository = newsRepository
+    )
+
+    @Provides
+    @Singleton
+    internal fun provideLoadStoriesListUseCase(
+        storiesRepository: StoriesRepository
+    ) = LoadStoriesListUseCase(
+        repository = storiesRepository
     )
 }

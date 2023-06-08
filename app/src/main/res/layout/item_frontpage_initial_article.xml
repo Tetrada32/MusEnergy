@@ -9,11 +9,11 @@
 
         <variable
             name="presenter"
-            type="com.gahov.musenergy.feature.frontpage.presenter.FrontpagePresenter" />
+            type="com.gahov.musenergy.feature.articles.presenter.ArticleHolderPresenter" />
 
         <variable
             name="article"
-            type="com.gahov.musenergy.feature.articles.model.ArticleModel.DefaultArticle" />
+            type="com.gahov.musenergy.feature.articles.model.ArticleModel.InitialArticle" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +45,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:setImage="@{article.image}" />
+                    app:setImage="@{article.articleData.image}" />
 
                 <View
                     android:id="@+id/frontpageWhiteBackground"
@@ -67,7 +67,7 @@
                     app:layout_constraintBottom_toTopOf="@id/frontpageCollectionTitle"
                     app:layout_constraintStart_toStartOf="@+id/frontpageInitialArticleImage"
                     app:layout_constraintTop_toBottomOf="@id/frontpageInitialArticleImage"
-                    app:setText="@{article.sourceName}"
+                    app:setText="@{article.articleData.sourceName}"
                     tools:text="Subtitle" />
 
                 <TextView
@@ -82,7 +82,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/frontpageInitialArticleImage"
                     app:layout_constraintStart_toStartOf="@+id/frontpageInitialArticleImage"
                     app:layout_constraintTop_toBottomOf="@id/frontpageCollectionSubtitle"
-                    app:setText="@{article.title}"
+                    app:setText="@{article.articleData.title}"
                     tools:text="TOP Inital News Article! " />
 
                 <com.google.android.material.button.MaterialButton

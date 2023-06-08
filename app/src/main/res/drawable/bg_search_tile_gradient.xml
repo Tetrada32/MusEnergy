@@ -4,8 +4,8 @@
     <gradient
         android:centerX="50%"
         android:centerY="50%"
-        android:endColor="@color/redesign_search_tile_back_bg"
+        android:endColor="@color/search_tile_back_bg"
         android:gradientRadius="100%"
-        android:startColor="@color/redesign_search_tile_front_bg"
+        android:startColor="@color/search_tile_front_bg"
         android:type="radial" />
 </shape>

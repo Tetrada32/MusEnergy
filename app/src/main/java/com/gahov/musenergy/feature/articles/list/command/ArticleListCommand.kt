@@ -9,5 +9,4 @@ sealed class ArticleListCommand : Command.FeatureCommand() {
 
     data class NetworkError(val error: Error) : ArticleListCommand()
 
-    object HideKeyboard : ArticleListCommand()
 }

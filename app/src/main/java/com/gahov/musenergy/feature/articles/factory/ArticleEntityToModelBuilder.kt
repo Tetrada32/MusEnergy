@@ -1,38 +1,88 @@
 package com.gahov.musenergy.feature.articles.factory
 
 import com.gahov.domain.entities.news.ArticleEntity
+import com.gahov.domain.entities.search.SearchNewsCategory
 import com.gahov.musenergy.arch.ui.view.model.IconProvider
 import com.gahov.musenergy.arch.ui.view.model.TextProvider
 import com.gahov.musenergy.feature.articles.model.ArticleModel
+import com.gahov.musenergy.feature.articles.model.ArticleModel.Companion.CATEGORY_ARTICLE_ID
 import com.gahov.musenergy.feature.articles.model.ArticleModel.Companion.DEFAULT_ARTICLE_ID
+import com.gahov.musenergy.feature.articles.model.ArticleModel.Companion.INITIAL_ARTICLE_ID
+import com.gahov.musenergy.feature.articles.model.BaseArticleData
 
 
-class ArticleEntityToModelBuilder {
+class ArticleEntityToModelBuilder : ArticleEntityBuilder {
 
     private val articleItems: MutableList<ArticleModel> = mutableListOf()
 
-    fun create(articleEntityItems: List<ArticleEntity>): List<ArticleModel> {
+    override fun buildFrontpageList(articleEntityItems: List<ArticleEntity>): List<ArticleModel> {
         articleItems.clear()
-        articleEntityItems.map { data -> createDefaultArticle(articleEntity = data) }
+        articleEntityItems.mapIndexed { index, data ->
+            if (index == FIRST_INDEX) {
+                createInitialArticle(articleEntity = data)
+            } else {
+                createDefaultArticle(articleEntity = data)
+            }
+        }
         return articleItems
     }
 
-    private fun createDefaultArticle(articleEntity: ArticleEntity) {
-        with(articleEntity) {
-            articleItems.add(
-                ArticleModel.DefaultArticle(
-                    id = DEFAULT_ARTICLE_ID,
-                    image = IconProvider.Url(url = urlToImage.toString()),
-                    title = TextProvider.Text(text = title.toString()),
-                    description = TextProvider.Text(text = description.toString()),
-                    author = TextProvider.Text(text = author.toString()),
-                    publishedAt = TextProvider.Text(text = publishedAt.toString()),
-                    urlToSource = TextProvider.Text(text = url.toString()),
-                    content = TextProvider.Text(text = content.toString()),
-                    sourceId = TextProvider.Text(text = sourceId.toString()),
-                    sourceName = TextProvider.Text(text = sourceName.toString())
-                )
+    override fun buildCategoriesList(
+        category: SearchNewsCategory,
+        articleEntityItems: List<ArticleEntity>
+    ): List<ArticleModel> {
+        return articleEntityItems.map {
+            createCategoryArticle(
+                articleEntity = it,
+                category = category
             )
         }
+    }
+
+    private fun createDefaultArticle(articleEntity: ArticleEntity) {
+        articleItems.add(
+            ArticleModel.DefaultArticle(
+                id = DEFAULT_ARTICLE_ID,
+                articleData = createBaseArticleData(articleEntity)
+            )
+        )
+    }
+
+    private fun createInitialArticle(articleEntity: ArticleEntity) {
+        articleItems.add(
+            FIRST_INDEX, ArticleModel.InitialArticle(
+                id = INITIAL_ARTICLE_ID,
+                articleData = createBaseArticleData(articleEntity)
+            )
+        )
+    }
+
+    private fun createCategoryArticle(
+        articleEntity: ArticleEntity,
+        category: SearchNewsCategory
+    ): ArticleModel {
+        return ArticleModel.CategoryArticle(
+            id = CATEGORY_ARTICLE_ID,
+            articleData = createBaseArticleData(articleEntity),
+            categoryName = TextProvider.Text(text = category.id)
+        )
+    }
+
+    private fun createBaseArticleData(articleEntity: ArticleEntity): BaseArticleData {
+        return BaseArticleData(
+            image = IconProvider.Url(url = articleEntity.urlToImage.toString()),
+            title = TextProvider.Text(text = articleEntity.title.toString()),
+            description = TextProvider.Text(text = articleEntity.description.toString()),
+            author = TextProvider.Text(text = articleEntity.author.toString()),
+            publishedAt = TextProvider.Text(text = articleEntity.publishedAt.toString()),
+            urlToSource = TextProvider.Text(text = articleEntity.url.toString()),
+            content = TextProvider.Text(text = articleEntity.content.toString()),
+            sourceId = TextProvider.Text(text = articleEntity.sourceId.toString()),
+            sourceName = TextProvider.Text(text = articleEntity.sourceName.toString())
+        )
+    }
+
+    companion object {
+        const val FIRST_INDEX = 0
     }
 }

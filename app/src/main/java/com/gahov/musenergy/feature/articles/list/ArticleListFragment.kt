@@ -6,13 +6,12 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gahov.musenergy.R
-import com.gahov.musenergy.arch.ktx.hideKeyboard
 import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.ui.fragment.BaseFragment
 import com.gahov.musenergy.databinding.FragmentArticleListBinding
 import com.gahov.musenergy.feature.articles.list.command.ArticleListCommand
 import com.gahov.musenergy.feature.articles.model.ArticleModel
-import com.gahov.musenergy.feature.frontpage.adapter.FrontpageAdapter
+import com.gahov.musenergy.feature.frontpage.adapter.ArticleListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,8 +23,8 @@ class ArticleListFragment :
 
     private val args: ArticleListFragmentArgs by navArgs()
 
-    private val frontpageAdapter: FrontpageAdapter by lazy {
-        FrontpageAdapter(presenter = viewModel)
+    private val frontpageAdapter: ArticleListAdapter by lazy {
+        ArticleListAdapter(presenter = viewModel)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,14 +38,12 @@ class ArticleListFragment :
         viewModel.isLoading.observe(viewLifecycleOwner, ::showLoadingProgress)
     }
 
-
     override fun handleFeatureCommand(command: Command.FeatureCommand) {
         with(command) {
             if (this is ArticleListCommand) {
                 when (this) {
                     is ArticleListCommand.DisplayContent -> displayContent(content)
                     is ArticleListCommand.NetworkError -> {}
-                    is ArticleListCommand.HideKeyboard -> hideKeyboard()
                 }
             } else {
                 super.handleFeatureCommand(command)

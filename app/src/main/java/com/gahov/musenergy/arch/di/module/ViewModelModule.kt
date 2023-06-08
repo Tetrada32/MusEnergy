@@ -10,6 +10,7 @@ import com.gahov.musenergy.feature.favorites.FavoritesViewModel
 import com.gahov.musenergy.feature.frontpage.FrontpageViewModel
 import com.gahov.musenergy.feature.profile.ProfileViewModel
 import com.gahov.musenergy.feature.search.SearchViewModel
+import com.gahov.musenergy.feature.stories.StoriesViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -52,5 +53,10 @@ internal abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SearchViewModel::class)
     abstract fun bindSearchViewModel(viewModel: SearchViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(StoriesViewModel::class)
+    abstract fun bindStoriesViewModel(viewModel: StoriesViewModel): ViewModel
 
 }

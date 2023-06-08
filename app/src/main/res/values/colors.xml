@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
+    <color name="white_transparent">#00ffffff</color>
 
     <color name="bluegrey_15">#202226</color>
     <color name="bluegrey_40">#5a5e66</color>
@@ -24,6 +25,13 @@
     <color name="grey_80">#cccccc</color>
     <color name="grey_100">#ffffff</color>
 
-    <color name="redesign_search_tile_back_bg">#33000000</color>
-    <color name="redesign_search_tile_front_bg">#08000000</color>
+    <color name="search_tile_back_bg">#33000000</color>
+    <color name="search_tile_front_bg">#08000000</color>
+
+    <color name="grey_0_alpha_10">#1a000000</color>
+
+    <color name="grayScale">#8affffff</color>
+    <color name="progressMaxActive">@color/white</color>
+    <color name="progressPrimary">@color/white</color>
+    <color name="progressSecondary">@color/bluegrey_60</color>
 </resources>

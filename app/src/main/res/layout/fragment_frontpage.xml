@@ -3,11 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="presenter"
+            type="com.gahov.musenergy.feature.frontpage.presenter.FrontpagePresenter" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="false"
         android:orientation="vertical">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/frontpageStoriesButtonStub"
+            android:layout_width="@dimen/grid_40"
+            android:layout_height="@dimen/grid_40"
+            android:layout_marginStart="@dimen/grid_30"
+            android:layout_marginTop="@dimen/grid_35"
+            android:contentDescription="@null"
+            android:importantForAccessibility="no"
+            android:onClick="@{() -> presenter.onStoriesButtonClick()}"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_stories"
+            app:backgroundTint="@color/grey_100"
+            app:fabCustomSize="@dimen/grid_40"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_marginTopSystemWindowInsets="@{true}"
+            app:maxImageSize="@dimen/grid_40"
+            tools:visibility="visible" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/frontpageSwipeLayout"
@@ -35,7 +64,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0"
                 tools:itemCount="2"
-                tools:listitem="@layout/item_frontpage_article" />
+                tools:listitem="@layout/item_default_article" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

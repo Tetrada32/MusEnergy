@@ -14,26 +14,31 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.gahov.musenergy.arch.ui.view.model.TextProvider
 import com.gahov.domain.component.logger.Level
 import com.gahov.domain.component.logger.Logger
 import com.gahov.domain.entities.failure.Failure
 import com.gahov.musenergy.arch.component.error.ErrorHandler
 import com.gahov.musenergy.arch.controller.BaseViewModel
 import com.gahov.musenergy.arch.ktx.getString
-import com.gahov.musenergy.arch.ktx.hideKeyboard
 import com.gahov.musenergy.arch.provider.RouterProvider
 import com.gahov.musenergy.arch.router.NavComponentRouter
 import com.gahov.musenergy.arch.router.Router
 import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.router.command.NavDirection
 import com.gahov.musenergy.arch.ui.view.BaseView
+import com.gahov.musenergy.arch.ui.view.model.TextProvider
+import com.gahov.musenergy.feature.main.BottomNavigationHost
+import com.gahov.musenergy.feature.main.MainActivity
 import javax.inject.Inject
 
 abstract class BaseFragment<B : ViewDataBinding, T : ViewModel>(
     @LayoutRes private val contentLayoutID: Int,
     private val viewModelClass: Class<T>,
 ) : Fragment(), BaseView, RouterProvider {
+
+    protected open val isBottomNavigationVisible = true
+
+    protected var bottomNavigationHost: BottomNavigationHost? = null
 
     protected lateinit var binding: B
         private set
@@ -59,6 +64,7 @@ abstract class BaseFragment<B : ViewDataBinding, T : ViewModel>(
     override fun onAttach(context: Context) {
         super.onAttach(context)
         viewModel = ViewModelProvider(this, viewModelFactory)[viewModelClass]
+        bottomNavigationHost = activity as? MainActivity
     }
 
     override fun onCreateView(
@@ -77,9 +83,18 @@ abstract class BaseFragment<B : ViewDataBinding, T : ViewModel>(
         setObservers()
     }
 
-    override fun onPause() {
-        super.onPause()
-        hideKeyboard()
+    override fun onResume() {
+        super.onResume()
+
+        bottomNavigationHost?.let { safeHost ->
+            safeHost.showBottomNavigation(isBottomNavigationVisible)
+            safeHost.shouldShowBottomNavigation = isBottomNavigationVisible
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        bottomNavigationHost = null
     }
 
     protected open fun navigate(command: Command) {

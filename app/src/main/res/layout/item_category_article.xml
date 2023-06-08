@@ -9,24 +9,27 @@
 
         <variable
             name="presenter"
-            type="com.gahov.musenergy.feature.frontpage.presenter.FrontpagePresenter" />
+            type="com.gahov.musenergy.feature.articles.presenter.ArticleHolderPresenter" />
 
         <variable
             name="article"
-            type="com.gahov.musenergy.feature.articles.model.ArticleModel.DefaultArticle" />
+            type="com.gahov.musenergy.feature.articles.model.ArticleModel.CategoryArticle" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/categoryArticleLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/grid_25">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/frontpageArticleParent"
+            android:id="@+id/categoryArticleParent"
             style="@style/Widget.MusEnergy.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/grid_25"
-            android:layout_marginBottom="@dimen/grid_80"
+            android:layout_marginBottom="@dimen/grid_25"
+            android:onClick="@{() -> presenter.onArticleClick(article)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,33 +40,31 @@
                 android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/frontpageArticleImage"
+                    android:id="@+id/categoryArticleImage"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="@dimen/grid_200"
                     android:contentDescription="@null"
                     android:importantForAccessibility="no"
-                    android:minHeight="@dimen/grid_100"
                     android:scaleType="centerCrop"
-                    app:layout_constraintBottom_toTopOf="@id/frontpageArticleBottomBlock"
-                    app:layout_constraintDimensionRatio="H,27:32"
+                    app:layout_constraintBottom_toTopOf="@id/categoryArticleBottomBlock"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:setImage="@{article.image}" />
+                    app:setImage="@{article.articleData.image}" />
 
                 <RelativeLayout
-                    android:id="@+id/frontpageArticleBottomBlock"
+                    android:id="@+id/categoryArticleBottomBlock"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:importantForAccessibility="no"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/frontpageArticleImage" />
+                    app:layout_constraintTop_toBottomOf="@id/categoryArticleImage" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/frontpageArticleSubtitle"
-                    style="@style/TextAppearance.MusEnergy.Text.Small2"
+                    android:id="@+id/categoryArticleSubtitle"
+                    style="@style/TextAppearance.MusEnergy.Text.Small3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/grid_25"
@@ -71,40 +72,24 @@
                     android:textColor="@color/bluegrey_60"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/frontpageArticleImage"
-                    app:setText="@{article.sourceName}"
+                    app:layout_constraintTop_toBottomOf="@+id/categoryArticleImage"
+                    app:setText="@{article.articleData.sourceName}"
                     tools:text="Short article" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/frontpageArticleTitle"
-                    style="@style/TextAppearance.MusEnergy.Headline4"
+                    android:id="@+id/categoryArticleTitle"
+                    style="@style/TextAppearance.MusEnergy.Headline5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/grid_25"
                     android:layout_marginTop="@dimen/grid_5"
-                    app:layout_constraintBottom_toTopOf="@id/frontpageArticleAllButton"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/frontpageArticleSubtitle"
-                    app:setText="@{article.title}"
-                    tools:text="This is the best news!" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/frontpageArticleAllButton"
-                    style="@style/Widget.MusEnergy.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/grid_25"
-                    android:layout_marginTop="@dimen/grid_16"
-                    android:layout_marginBottom="@dimen/grid_35"
-                    android:contentDescription="@null"
-                    android:importantForAccessibility="no"
-                    android:onClick="@{() -> presenter.onArticleClick(article)}"
-                    android:text="@string/read_more"
+                    android:layout_marginBottom="@dimen/grid_25"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/frontpageArticleTitle" />
+                    app:layout_constraintTop_toBottomOf="@+id/categoryArticleSubtitle"
+                    app:setText="@{article.articleData.title}"
+                    tools:text="This is the best news!" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

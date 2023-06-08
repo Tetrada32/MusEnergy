@@ -2,15 +2,13 @@ package com.gahov.musenergy.feature.frontpage
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gahov.musenergy.R
-import com.gahov.musenergy.arch.ktx.hideKeyboard
 import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.ui.fragment.BaseFragment
 import com.gahov.musenergy.databinding.FragmentFrontpageBinding
 import com.gahov.musenergy.feature.articles.model.ArticleModel
-import com.gahov.musenergy.feature.frontpage.adapter.FrontpageAdapter
+import com.gahov.musenergy.feature.frontpage.adapter.ArticleListAdapter
 import com.gahov.musenergy.feature.frontpage.command.FrontpageCommand
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,12 +19,16 @@ class FrontpageFragment :
         viewModelClass = FrontpageViewModel::class.java
     ) {
 
-    private val frontpageAdapter: FrontpageAdapter by lazy {
-        FrontpageAdapter(presenter = viewModel)
+    override val isBottomNavigationVisible: Boolean = true
+
+    private val frontpageAdapter: ArticleListAdapter by lazy {
+        ArticleListAdapter(presenter = viewModel)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.presenter = viewModel
+
         setupAdapter()
     }
 
@@ -35,10 +37,7 @@ class FrontpageFragment :
             if (this is FrontpageCommand) {
                 when (this) {
                     is FrontpageCommand.DisplayContent -> displayContent(content)
-                    is FrontpageCommand.OnReloadEvent -> {}
-                    is FrontpageCommand.OnOpenInBrowser -> {}
                     is FrontpageCommand.NetworkError -> {}
-                    FrontpageCommand.HideKeyboard -> hideKeyboard()
                 }
             } else {
                 super.handleFeatureCommand(command)

@@ -13,7 +13,7 @@
 
         <variable
             name="article"
-            type="com.gahov.musenergy.feature.articles.model.ArticleModel.DefaultArticle" />
+            type="com.gahov.musenergy.feature.articles.model.ArticleModel" />
     </data>
 
     <ScrollView
@@ -39,7 +39,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/articleDetailsImage"
                 app:layout_constraintStart_toStartOf="@+id/articleDetailsImage"
                 app:layout_constraintTop_toTopOf="parent"
-                app:setText="@{article.title}"
+                app:setText="@{article.articleData.title}"
                 tools:text="TOP Inital News Article! " />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -52,7 +52,7 @@
                 android:textColor="@color/bluegrey_60"
                 app:layout_constraintStart_toStartOf="@+id/articleDetailsImage"
                 app:layout_constraintTop_toBottomOf="@id/articleDetailsTitle"
-                app:setText="@{article.sourceName}"
+                app:setText="@{article.articleData.sourceName}"
                 tools:text="Source name" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -67,7 +67,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/articleDetailsSourceName"
-                app:setImage="@{article.image}" />
+                app:setImage="@{article.articleData.image}" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/articleShareIcon"
@@ -93,7 +93,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/articleDetailsImage"
-                app:setText="@{article.description}"
+                app:setText="@{article.articleData.description}"
                 tools:text="Lorem ipsum! This is description of an article details!" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -108,7 +108,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/articleDetailsText"
-                app:setText="@{article.author}"
+                app:setText="@{article.articleData.author}"
                 tools:text="John Deer" />
 
             <com.google.android.material.button.MaterialButton
