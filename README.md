@@ -1,4 +1,4 @@
-# [PROJECT NAME]
+# [MusEnergy]
 Welcome to Android "MusEnergy", which is currently at version 0.0.1  :)  
 This project is about music. It collects various news about music on the internet and shows articles. 
 You can also search news by category and genre.
