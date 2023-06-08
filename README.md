@@ -3,18 +3,19 @@ Welcome to Android "MusEnergy", which is currently at version 0.0.1  :)
 This project is about music. It collects various news about music on the internet and shows articles. 
 You can also search news by category and genre.
 
-#NOTE: The project is currently under development and is about 30% complete!
+### NOTE: The project is currently under development and is about 30% complete!
+
 
 ## Project description 
-# Current state: 
+### Current state: 
 At the moment, the main screen with various articles on the topic of music, as well as the category search screen, has been implemented.
 There is also a screen "Article Details".
 
-# Future: 
+### Future: 
 It is planned to implement the "Favorites" screen, where the articles that the user likes will be saved. 
 As well as "profile" and "settings" screens.
 
-# Technologies: 
+### Technologies: 
 The application is developed in accordance with the best practices recommended in Android development.
 
 It's based on [Clean Architecture](https://medium.com/android-dev-hacks/detailed-guide-on-android-clean-architecture-9eab262a9011).
@@ -25,6 +26,7 @@ Main technologies and libraries:
 - Retrofit 2 
 - OkHttp
 - Coil 
+
 
 # If you want to install the application via AS, or if you also want to contribute: 
 
