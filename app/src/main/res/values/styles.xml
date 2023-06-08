@@ -141,4 +141,8 @@
         <item name="cornerSize">@dimen/grid_8</item>
     </style>
 
+    <declare-styleable name="StoriesProgressView">
+        <attr name="progressCount" format="integer|reference" />
+    </declare-styleable>
+
 </resources>

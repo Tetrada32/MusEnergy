@@ -30,7 +30,7 @@ class ArticleDetailsFragment :
     }
 
     private fun setupContent() {
-        val articleDetails = args.article as ArticleModel.DefaultArticle
+        val articleDetails = args.article
         binding.presenter = viewModel
         binding.article = articleDetails
     }

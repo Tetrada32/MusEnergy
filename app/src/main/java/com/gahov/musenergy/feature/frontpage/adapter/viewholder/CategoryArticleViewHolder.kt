@@ -4,7 +4,7 @@ import androidx.databinding.ViewDataBinding
 import com.gahov.musenergy.arch.ui.recycler.BaseViewHolder
 import com.gahov.musenergy.databinding.ItemCategoryArticleBinding
 import com.gahov.musenergy.feature.articles.model.ArticleModel
-import com.gahov.musenergy.feature.frontpage.presenter.ArticleHolderPresenter
+import com.gahov.musenergy.feature.articles.presenter.ArticleHolderPresenter
 
 class CategoryArticleViewHolder(
     private val presenter: ArticleHolderPresenter, binding: ViewDataBinding

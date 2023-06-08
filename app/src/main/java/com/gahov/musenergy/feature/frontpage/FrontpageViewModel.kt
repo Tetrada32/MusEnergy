@@ -2,6 +2,7 @@ package com.gahov.musenergy.feature.frontpage
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.gahov.domain.component.logger.Logger
 import com.gahov.domain.entities.common.Either
 import com.gahov.domain.entities.failure.Failure
 import com.gahov.domain.entities.news.ArticleEntity
@@ -10,15 +11,16 @@ import com.gahov.musenergy.arch.controller.BaseViewModel
 import com.gahov.musenergy.feature.articles.factory.ArticleEntityBuilder
 import com.gahov.musenergy.feature.articles.model.ArticleModel
 import com.gahov.musenergy.feature.frontpage.command.FrontpageCommand
-import com.gahov.musenergy.feature.frontpage.presenter.ArticleHolderPresenter
+import com.gahov.musenergy.feature.articles.presenter.ArticleHolderPresenter
+import com.gahov.musenergy.feature.frontpage.presenter.FrontpagePresenter
 import javax.inject.Inject
 import javax.inject.Provider
 
 class FrontpageViewModel @Inject constructor(
     private val loadFrontpageUseCase: LoadFrontpageUseCase,
-    private val logger: com.gahov.domain.component.logger.Logger,
+    private val logger: Logger,
     private val articleEntityBuilder: Provider<ArticleEntityBuilder>
-) : BaseViewModel(), ArticleHolderPresenter {
+) : BaseViewModel(), FrontpagePresenter, ArticleHolderPresenter {
 
     private val _swipeRefreshEventActive by lazy { MutableLiveData(false) }
     val swipeRefreshEventActive: LiveData<Boolean>
@@ -55,5 +57,9 @@ class FrontpageViewModel @Inject constructor(
 
     override fun onArticleClick(article: ArticleModel) {
         navigateDirection(FrontpageFragmentDirections.actionFrontpageToArticleDetails(article))
+    }
+
+    override fun onStoriesButtonClick() {
+        navigateDirection(FrontpageFragmentDirections.actionFrontpageToStories())
     }
 }

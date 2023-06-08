@@ -8,6 +8,7 @@ import com.gahov.musenergy.feature.articles.model.ArticleModel
 import com.gahov.musenergy.feature.articles.model.ArticleModel.Companion.CATEGORY_ARTICLE_ID
 import com.gahov.musenergy.feature.articles.model.ArticleModel.Companion.DEFAULT_ARTICLE_ID
 import com.gahov.musenergy.feature.articles.model.ArticleModel.Companion.INITIAL_ARTICLE_ID
+import com.gahov.musenergy.feature.articles.model.BaseArticleData
 
 
 class ArticleEntityToModelBuilder : ArticleEntityBuilder {
@@ -67,8 +68,8 @@ class ArticleEntityToModelBuilder : ArticleEntityBuilder {
         )
     }
 
-    private fun createBaseArticleData(articleEntity: ArticleEntity): ArticleModel.BaseArticleData {
-        return ArticleModel.BaseArticleData(
+    private fun createBaseArticleData(articleEntity: ArticleEntity): BaseArticleData {
+        return BaseArticleData(
             image = IconProvider.Url(url = articleEntity.urlToImage.toString()),
             title = TextProvider.Text(text = articleEntity.title.toString()),
             description = TextProvider.Text(text = articleEntity.description.toString()),

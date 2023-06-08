@@ -20,6 +20,7 @@ import javax.inject.Singleton
         SharedPreferencesModule::class,
         SourceModule::class,
         ViewModelModule::class,
+        ExoModule::class
     ]
 )
 @InstallIn(SingletonComponent::class)

@@ -6,7 +6,6 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gahov.musenergy.R
-import com.gahov.musenergy.arch.ktx.hideKeyboard
 import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.ui.fragment.BaseFragment
 import com.gahov.musenergy.databinding.FragmentArticleListBinding
@@ -45,7 +44,6 @@ class ArticleListFragment :
                 when (this) {
                     is ArticleListCommand.DisplayContent -> displayContent(content)
                     is ArticleListCommand.NetworkError -> {}
-                    is ArticleListCommand.HideKeyboard -> hideKeyboard()
                 }
             } else {
                 super.handleFeatureCommand(command)

@@ -10,7 +10,7 @@ import com.gahov.musenergy.feature.articles.model.ArticleModel
 import com.gahov.musenergy.feature.frontpage.adapter.viewholder.CategoryArticleViewHolder
 import com.gahov.musenergy.feature.frontpage.adapter.viewholder.DefaultArticleViewHolder
 import com.gahov.musenergy.feature.frontpage.adapter.viewholder.InitialArticleViewHolder
-import com.gahov.musenergy.feature.frontpage.presenter.ArticleHolderPresenter
+import com.gahov.musenergy.feature.articles.presenter.ArticleHolderPresenter
 
 class ArticleListAdapter(
     private val presenter: ArticleHolderPresenter

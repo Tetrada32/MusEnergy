@@ -73,6 +73,8 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 
+    implementation("com.google.android.exoplayer:exoplayer:2.18.4")
+
     implementation("androidx.startup:startup-runtime:1.1.1")
 
     implementation("io.coil-kt:coil:2.2.2")

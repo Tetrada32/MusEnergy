@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gahov.musenergy.R
-import com.gahov.musenergy.arch.ktx.hideKeyboard
 import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.ui.fragment.BaseFragment
 import com.gahov.musenergy.databinding.FragmentFrontpageBinding
@@ -20,12 +19,16 @@ class FrontpageFragment :
         viewModelClass = FrontpageViewModel::class.java
     ) {
 
+    override val isBottomNavigationVisible: Boolean = true
+
     private val frontpageAdapter: ArticleListAdapter by lazy {
         ArticleListAdapter(presenter = viewModel)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.presenter = viewModel
+
         setupAdapter()
     }
 
@@ -35,7 +38,6 @@ class FrontpageFragment :
                 when (this) {
                     is FrontpageCommand.DisplayContent -> displayContent(content)
                     is FrontpageCommand.NetworkError -> {}
-                    FrontpageCommand.HideKeyboard -> hideKeyboard()
                 }
             } else {
                 super.handleFeatureCommand(command)

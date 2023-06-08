@@ -13,7 +13,7 @@
 
         <variable
             name="article"
-            type="com.gahov.musenergy.feature.articles.model.ArticleModel.DefaultArticle" />
+            type="com.gahov.musenergy.feature.articles.model.ArticleModel" />
     </data>
 
     <ScrollView

@@ -9,7 +9,7 @@
 
         <variable
             name="presenter"
-            type="com.gahov.musenergy.feature.frontpage.presenter.ArticleHolderPresenter" />
+            type="com.gahov.musenergy.feature.articles.presenter.ArticleHolderPresenter" />
 
         <variable
             name="article"

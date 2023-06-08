@@ -9,5 +9,4 @@ sealed class FrontpageCommand : Command.FeatureCommand() {
 
     data class NetworkError(val error: Error) : FrontpageCommand()
 
-    object HideKeyboard : FrontpageCommand()
 }

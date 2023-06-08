@@ -5,24 +5,16 @@ import com.gahov.musenergy.arch.ui.view.model.TextProvider
 import com.gahov.musenergy.feature.articles.ArticleViewType
 import java.io.Serializable
 
-sealed class ArticleModel(private val id: String) : Serializable {
-
-    data class BaseArticleData(
-        val image: IconProvider,
-        val title: TextProvider,
-        val description: TextProvider,
-        val author: TextProvider,
-        val urlToSource: TextProvider,
-        val publishedAt: TextProvider,
-        val content: TextProvider,
-        val sourceId: TextProvider,
-        val sourceName: TextProvider
-    )
+sealed class ArticleModel(
+    private val id: String,
+    open val articleData: BaseArticleData
+) :
+    Serializable {
 
     data class DefaultArticle(
         val id: String = DEFAULT_ARTICLE_ID,
-        val articleData: BaseArticleData
-    ) : ArticleModel(id = id), Serializable {
+        override val articleData: BaseArticleData
+    ) : ArticleModel(id = id, articleData = articleData), Serializable {
 
         override fun getModelType(): ArticleViewType {
             return ArticleViewType.DEFAULT_ARTICLE
@@ -31,8 +23,8 @@ sealed class ArticleModel(private val id: String) : Serializable {
 
     data class InitialArticle(
         val id: String = INITIAL_ARTICLE_ID,
-        val articleData: BaseArticleData
-    ) : ArticleModel(id = id), Serializable {
+        override val articleData: BaseArticleData
+    ) : ArticleModel(id = id, articleData = articleData), Serializable {
 
         override fun getModelType(): ArticleViewType {
             return ArticleViewType.INITIAL_ARTICLE
@@ -41,9 +33,9 @@ sealed class ArticleModel(private val id: String) : Serializable {
 
     data class CategoryArticle(
         val id: String = CATEGORY_ARTICLE_ID,
-        val articleData: BaseArticleData,
+        override val articleData: BaseArticleData,
         val categoryName: TextProvider,
-    ) : ArticleModel(id = id), Serializable {
+    ) : ArticleModel(id = id, articleData = articleData), Serializable {
 
         override fun getModelType(): ArticleViewType {
             return ArticleViewType.CATEGORY_ARTICLE
@@ -62,3 +54,15 @@ sealed class ArticleModel(private val id: String) : Serializable {
         const val CATEGORY_ARTICLE_ID = "category_article_id"
     }
 }
+
+data class BaseArticleData(
+    val image: IconProvider,
+    val title: TextProvider,
+    val description: TextProvider,
+    val author: TextProvider,
+    val urlToSource: TextProvider,
+    val publishedAt: TextProvider,
+    val content: TextProvider,
+    val sourceId: TextProvider,
+    val sourceName: TextProvider
+) : Serializable

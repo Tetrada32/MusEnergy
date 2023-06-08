@@ -1,4 +1,4 @@
-package com.gahov.musenergy.feature.frontpage.presenter
+package com.gahov.musenergy.feature.articles.presenter
 
 import com.gahov.musenergy.feature.articles.model.ArticleModel
 

@@ -10,7 +10,7 @@ import com.gahov.musenergy.arch.controller.BaseViewModel
 import com.gahov.musenergy.feature.articles.factory.ArticleEntityBuilder
 import com.gahov.musenergy.feature.articles.list.command.ArticleListCommand
 import com.gahov.musenergy.feature.articles.model.ArticleModel
-import com.gahov.musenergy.feature.frontpage.presenter.ArticleHolderPresenter
+import com.gahov.musenergy.feature.articles.presenter.ArticleHolderPresenter
 import javax.inject.Inject
 import javax.inject.Provider
 
