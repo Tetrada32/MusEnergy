@@ -37,19 +37,5 @@
                 tools:itemCount="2"
                 tools:listitem="@layout/item_frontpage_article" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-        <ProgressBar
-            android:id="@+id/frontpageProgress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/purple_200"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

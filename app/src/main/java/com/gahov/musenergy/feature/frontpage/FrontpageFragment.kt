@@ -49,6 +49,13 @@ class FrontpageFragment :
     private fun setupAdapter() {
         binding.frontpageRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.frontpageRecycler.adapter = frontpageAdapter
+        setupSwipeToRefresh()
+    }
+
+    private fun setupSwipeToRefresh() {
+        binding.frontpageSwipeLayout.setOnRefreshListener {
+            viewModel.onRefreshingContentEvent(isLoading = true)
+        }
     }
 
     private fun displayContent(content: List<ArticleModel>) {
@@ -57,10 +64,10 @@ class FrontpageFragment :
 
     override fun setObservers() {
         super.setObservers()
-        viewModel.isLoading.observe(viewLifecycleOwner, ::showLoadingProgress)
+        viewModel.swipeRefreshEventActive.observe(viewLifecycleOwner, ::onRefreshStateChanged)
     }
 
-    private fun showLoadingProgress(isLoading: Boolean) {
-        binding.frontpageProgress.isVisible = isLoading
+    private fun onRefreshStateChanged(isRefreshing: Boolean) {
+        binding.frontpageSwipeLayout.isRefreshing = isRefreshing
     }
 }

@@ -1,5 +1,7 @@
 package com.gahov.musenergy.feature.frontpage
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.gahov.domain.entities.common.Either
 import com.gahov.domain.entities.failure.Failure
 import com.gahov.domain.entities.news.ArticleEntity
@@ -19,6 +21,10 @@ class FrontpageViewModel @Inject constructor(
     private val tokenProvider: TokenProvider
 ) : BaseViewModel(), FrontpagePresenter {
 
+    private val _swipeRefreshEventActive by lazy { MutableLiveData(false) }
+    val swipeRefreshEventActive: LiveData<Boolean>
+        get() = _swipeRefreshEventActive
+
     private val modelBuilder = ArticleEntityToModelBuilder()
 
     companion object {
@@ -27,7 +33,7 @@ class FrontpageViewModel @Inject constructor(
 
     init {
         saveDefaultToken()
-        launch { loadFrontpageContent() }
+        onRefreshingContentEvent()
     }
 
     //TODO TEMP, move this logic to another place!
@@ -39,20 +45,29 @@ class FrontpageViewModel @Inject constructor(
         }
     }
 
-    private suspend fun loadFrontpageContent() {
-        when (val result = loadFrontpageUseCase.execute(param = null)) {
-            is Either.Right -> onResultSuccess(articleRawList = result.success)
-            is Either.Left -> onResultFailure(result.failure)
+    private fun loadFrontpageContent() {
+        launch {
+            when (val result = loadFrontpageUseCase.execute(param = null)) {
+                is Either.Right -> onResultSuccess(articleRawList = result.success)
+                is Either.Left -> onResultFailure(result.failure)
+            }
         }
     }
 
     private fun onResultSuccess(articleRawList: List<ArticleEntity>) {
         val formattedList = modelBuilder.create(articleRawList)
         handleCommand(FrontpageCommand.DisplayContent(content = formattedList))
+        _swipeRefreshEventActive.postValue(false)
+    }
+
+    fun onRefreshingContentEvent(isLoading: Boolean = true) {
+        _swipeRefreshEventActive.postValue(isLoading)
+        loadFrontpageContent()
     }
 
     private fun onResultFailure(failureResult: Failure) {
         logger.log(message = "Failure: \n $failureResult")
+        _swipeRefreshEventActive.postValue(false)
     }
 
     override fun onArticleClick(article: ArticleModel.DefaultArticle) {
