@@ -3,7 +3,7 @@ package com.gahov.musenergy.feature.frontpage.presenter
 import com.gahov.musenergy.feature.articles.model.ArticleModel
 
 
-interface FrontpagePresenter {
+interface ArticleHolderPresenter {
 
-    fun onArticleClick(article: ArticleModel.DefaultArticle)
+    fun onArticleClick(article: ArticleModel)
 }

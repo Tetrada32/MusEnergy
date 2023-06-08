@@ -7,22 +7,22 @@ import com.gahov.domain.entities.failure.Failure
 import com.gahov.domain.entities.news.ArticleEntity
 import com.gahov.domain.usecase.news.frontpage.LoadFrontpageUseCase
 import com.gahov.musenergy.arch.controller.BaseViewModel
-import com.gahov.musenergy.feature.articles.factory.ArticleEntityToModelBuilder
+import com.gahov.musenergy.feature.articles.factory.ArticleEntityBuilder
 import com.gahov.musenergy.feature.articles.model.ArticleModel
 import com.gahov.musenergy.feature.frontpage.command.FrontpageCommand
-import com.gahov.musenergy.feature.frontpage.presenter.FrontpagePresenter
+import com.gahov.musenergy.feature.frontpage.presenter.ArticleHolderPresenter
 import javax.inject.Inject
+import javax.inject.Provider
 
 class FrontpageViewModel @Inject constructor(
     private val loadFrontpageUseCase: LoadFrontpageUseCase,
-    private val logger: com.gahov.domain.component.logger.Logger
-) : BaseViewModel(), FrontpagePresenter {
+    private val logger: com.gahov.domain.component.logger.Logger,
+    private val articleEntityBuilder: Provider<ArticleEntityBuilder>
+) : BaseViewModel(), ArticleHolderPresenter {
 
     private val _swipeRefreshEventActive by lazy { MutableLiveData(false) }
     val swipeRefreshEventActive: LiveData<Boolean>
         get() = _swipeRefreshEventActive
-
-    private val modelBuilder = ArticleEntityToModelBuilder()
 
     init {
         onRefreshingContentEvent()
@@ -38,7 +38,7 @@ class FrontpageViewModel @Inject constructor(
     }
 
     private fun onResultSuccess(articleRawList: List<ArticleEntity>) {
-        val formattedList = modelBuilder.create(articleRawList)
+        val formattedList = articleEntityBuilder.get().buildFrontpageList(articleRawList)
         handleCommand(FrontpageCommand.DisplayContent(content = formattedList))
         _swipeRefreshEventActive.postValue(false)
     }
@@ -53,7 +53,7 @@ class FrontpageViewModel @Inject constructor(
         _swipeRefreshEventActive.postValue(false)
     }
 
-    override fun onArticleClick(article: ArticleModel.DefaultArticle) {
+    override fun onArticleClick(article: ArticleModel) {
         navigateDirection(FrontpageFragmentDirections.actionFrontpageToArticleDetails(article))
     }
 }

@@ -7,30 +7,36 @@ import com.gahov.domain.entities.news.ArticleEntity
 import com.gahov.domain.entities.search.SearchNewsCategory
 import com.gahov.domain.usecase.news.list.LoadArticleListUseCase
 import com.gahov.musenergy.arch.controller.BaseViewModel
-import com.gahov.musenergy.feature.articles.factory.ArticleEntityToModelBuilder
+import com.gahov.musenergy.feature.articles.factory.ArticleEntityBuilder
 import com.gahov.musenergy.feature.articles.list.command.ArticleListCommand
 import com.gahov.musenergy.feature.articles.model.ArticleModel
-import com.gahov.musenergy.feature.frontpage.presenter.FrontpagePresenter
+import com.gahov.musenergy.feature.frontpage.presenter.ArticleHolderPresenter
 import javax.inject.Inject
+import javax.inject.Provider
 
 class ArticleListViewModel @Inject constructor(
     private val logger: com.gahov.domain.component.logger.Logger,
-    private val loadArticleListUseCase: LoadArticleListUseCase
-) : BaseViewModel(), FrontpagePresenter {
-
-    private val modelBuilder = ArticleEntityToModelBuilder()
+    private val loadArticleListUseCase: LoadArticleListUseCase,
+    private val articleEntityBuilder: Provider<ArticleEntityBuilder>,
+) : BaseViewModel(), ArticleHolderPresenter {
 
     fun loadContent(category: SearchNewsCategory) {
         launch {
             when (val result = loadArticleListUseCase.execute(ArticleCategoryParams(category))) {
-                is Either.Right -> onResultSuccess(articleRawList = result.success)
+                is Either.Right -> onResultSuccess(
+                    articleRawList = result.success,
+                    category = category
+                )
                 is Either.Left -> onResultFailure(result.failure)
             }
         }
     }
 
-    private fun onResultSuccess(articleRawList: List<ArticleEntity>) {
-        val formattedList = modelBuilder.create(articleRawList)
+    private fun onResultSuccess(articleRawList: List<ArticleEntity>, category: SearchNewsCategory) {
+        val formattedList = articleEntityBuilder.get().buildCategoriesList(
+            articleEntityItems = articleRawList,
+            category = category
+        )
         handleCommand(ArticleListCommand.DisplayContent(content = formattedList))
     }
 
@@ -39,7 +45,7 @@ class ArticleListViewModel @Inject constructor(
     }
 
     //TODO
-    override fun onArticleClick(article: ArticleModel.DefaultArticle) {
+    override fun onArticleClick(article: ArticleModel) {
 //        navigateDirection(FrontpageFragmentDirections.actionFrontpageToArticleDetails(article))
     }
 }

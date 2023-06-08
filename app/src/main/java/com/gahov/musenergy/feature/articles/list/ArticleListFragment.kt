@@ -12,7 +12,7 @@ import com.gahov.musenergy.arch.ui.fragment.BaseFragment
 import com.gahov.musenergy.databinding.FragmentArticleListBinding
 import com.gahov.musenergy.feature.articles.list.command.ArticleListCommand
 import com.gahov.musenergy.feature.articles.model.ArticleModel
-import com.gahov.musenergy.feature.frontpage.adapter.FrontpageAdapter
+import com.gahov.musenergy.feature.frontpage.adapter.ArticleListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,8 +24,8 @@ class ArticleListFragment :
 
     private val args: ArticleListFragmentArgs by navArgs()
 
-    private val frontpageAdapter: FrontpageAdapter by lazy {
-        FrontpageAdapter(presenter = viewModel)
+    private val frontpageAdapter: ArticleListAdapter by lazy {
+        ArticleListAdapter(presenter = viewModel)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +38,6 @@ class ArticleListFragment :
         super.setObservers()
         viewModel.isLoading.observe(viewLifecycleOwner, ::showLoadingProgress)
     }
-
 
     override fun handleFeatureCommand(command: Command.FeatureCommand) {
         with(command) {
