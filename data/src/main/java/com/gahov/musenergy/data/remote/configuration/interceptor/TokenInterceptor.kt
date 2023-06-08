@@ -1,5 +1,7 @@
 package com.gahov.musenergy.data.remote.configuration.interceptor
 
+import com.gahov.musenergy.data.common.util.API_TOKEN
+import com.gahov.musenergy.data.local.entities.TokenData
 import com.gahov.musenergy.data.remote.configuration.interceptor.utils.token.TokenProvider
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -8,10 +10,11 @@ class TokenInterceptor(private val tokenProvider: TokenProvider) :
     Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
-        val token = tokenProvider.getToken()
+        var token = tokenProvider.getToken()
 
         if (token.isNullOrBlank()) {
-            return chain.proceed(chain.request())
+            token = API_TOKEN
+            tokenProvider.setToken(TokenData(accessToken = token))
         }
 
         val request = chain.request()

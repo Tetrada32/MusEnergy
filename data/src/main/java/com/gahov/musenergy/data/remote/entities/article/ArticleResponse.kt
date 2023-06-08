@@ -29,5 +29,4 @@ data class ArticleResponse(
 
     @SerialName("content")
     val content: String? = null,
-
-    )
+)

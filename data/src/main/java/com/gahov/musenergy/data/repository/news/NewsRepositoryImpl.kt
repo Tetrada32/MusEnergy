@@ -6,7 +6,7 @@ import com.gahov.domain.entities.news.ArticleEntity
 import com.gahov.domain.entities.search.SearchNewsCategory
 import com.gahov.domain.repository.news.NewsRepository
 import com.gahov.musenergy.data.mapper.news.ArticleRemoteMapper
-import com.gahov.musenergy.data.remote.entities.success.DefaultSuccessResponse
+import com.gahov.musenergy.data.remote.entities.success.ArticleSuccessResponse
 import com.gahov.musenergy.data.source.news.NewsRemoteSource
 
 class NewsRepositoryImpl constructor(
@@ -29,7 +29,7 @@ class NewsRepositoryImpl constructor(
     }
 
     private fun mapApiResponseToDomain(
-        response: DefaultSuccessResponse
+        response: ArticleSuccessResponse
     ): List<ArticleEntity> {
         return response.articleResponses?.map { list -> articleRemoteMapper.toDomain(apiModel = list) }
             ?: emptyList()
