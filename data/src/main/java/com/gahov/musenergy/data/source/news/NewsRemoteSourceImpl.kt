@@ -16,6 +16,11 @@ class NewsRemoteSourceImpl(
     }
 
     override suspend fun loadCategoryNews(category: SearchNewsCategory): Either<Failure, DefaultSuccessResponse> {
-        return call { protocol.getNewsList(category.id) }
+        val musicParam = "$MUSIC_TAG ${category.id}"
+        return call { protocol.getNewsList(musicParam) }
+    }
+
+    companion object {
+        const val MUSIC_TAG = "music"
     }
 }
