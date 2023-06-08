@@ -16,10 +16,12 @@ In this application, I sort the articles in the request by key music tags in @Qu
 At the moment, the main screen with various articles on the topic of music, as well as the category search screen, has been implemented.
 There is also a screen "Article Details".
 On the details screen, it is possible to share the news, or go to the original site.
+Moreover, through the main screen, you can get to the "Stories" screen, where hard-coded videos are shown.
 
 ### Future: 
 It is planned to implement the "Favorites" screen, where the articles that the user likes will be saved. 
 As well as "profile" and "settings" screens.
+Stories are supposed to be not hard-coded. 
 
 ### Technologies: 
 The application is developed in accordance with the best practices recommended in Android development.
@@ -31,6 +33,7 @@ Main technologies and libraries:
 - Kotlin Coroutines 
 - Retrofit 2 
 - OkHttp
+- ExoPlayer
 - Coil 
 
 
