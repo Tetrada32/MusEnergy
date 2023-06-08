@@ -7,9 +7,15 @@ You can also search news by category and genre.
 
 
 ## Project description 
+### API used: [News API](https://newsapi.org/)
+This is a free API, that allows you to do 100 free requests per day. 
+In this application, I sort the articles in the request by key music tags in @Query parameters.
+
+
 ### Current state: 
 At the moment, the main screen with various articles on the topic of music, as well as the category search screen, has been implemented.
 There is also a screen "Article Details".
+On the details screen, it is possible to share the news, or go to the original site.
 
 ### Future: 
 It is planned to implement the "Favorites" screen, where the articles that the user likes will be saved. 
