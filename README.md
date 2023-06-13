@@ -62,7 +62,6 @@ Android Studio and all required tools can be downloaded here:
 ##### Kotlin
 - In this project we follow [general Android code-style guide](https://source.android.com/docs/core/architecture/hidl/code-style)
 and [Official Kotlin coding conventions](https://kotlinlang.org/docs/coding-conventions.html).
-The code style is enforced using [Spotless](https://github.com/diffplug/spotless) and [Ktlint](https://github.com/pinterest/ktlint) plugins.
 - The only language is 100% Kotlin, we don't use Java. 
 - Please make sure you don't leave extra commented out lines, logs, hard code, etc., which can make the code visually difficult to read.
 
