@@ -36,6 +36,8 @@ Thumbs.db
 .idea/
 
 app/build/
+data/build/
+domain/build/
 
 #NDK
 obj/
