@@ -1,5 +1,5 @@
 buildscript {
-    val kotlinVersion by extra("1.8.22")
+    val kotlinVersion by extra("1.9.0")
 
     repositories {
         google()
@@ -15,7 +15,7 @@ buildscript {
 
 plugins {
     id("com.google.dagger.hilt.android") version "2.47" apply false
-    id("org.jetbrains.kotlin.android") version "1.8.22" apply false
+    id("org.jetbrains.kotlin.android") version "1.9.0" apply false
 }
 
 allprojects {

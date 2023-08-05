@@ -43,7 +43,7 @@ Main technologies and libraries:
 ## Requirements
 - Android Studio version "Giraffe" | 2022.3.1 or later
 - JDK version 17
-- Kotlin version 1.8.22
+- Kotlin version 1.9.0
 - Gradle version 8 or later
 - Android SDK version 33
 
