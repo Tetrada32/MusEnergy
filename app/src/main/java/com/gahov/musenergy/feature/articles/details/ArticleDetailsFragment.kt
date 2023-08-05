@@ -12,7 +12,6 @@ import com.gahov.musenergy.common.extensions.openInBrowser
 import com.gahov.musenergy.common.extensions.shareWithUrl
 import com.gahov.musenergy.databinding.FragmentArticleDetailsBinding
 import com.gahov.musenergy.feature.articles.details.command.ArticleDetailsCommand
-import com.gahov.musenergy.feature.articles.model.ArticleModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

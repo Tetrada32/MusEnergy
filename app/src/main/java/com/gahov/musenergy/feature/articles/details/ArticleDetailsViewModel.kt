@@ -9,12 +9,12 @@ import javax.inject.Inject
 class ArticleDetailsViewModel @Inject constructor() : BaseViewModel(), ArticleDetailsPresenter {
 
     override fun onShareIconClick(article: ArticleModel) {
-        val url = (article as ArticleModel.DefaultArticle).articleData.urlToSource
+        val url = article.articleData.urlToSource
         handleCommand(ArticleDetailsCommand.ShareArticle(url))
     }
 
     override fun onOpenInBrowserClick(article: ArticleModel) {
-        val url = (article as ArticleModel.DefaultArticle).articleData.urlToSource
+        val url = article.articleData.urlToSource
         handleCommand(ArticleDetailsCommand.OnOpenInBrowser(url))
     }
 }
