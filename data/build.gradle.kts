@@ -26,11 +26,11 @@ android {
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     namespace = "com.gahov.data"
@@ -43,7 +43,7 @@ dependencies {
 
         coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
 
-        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.10")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.22")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4")
 
@@ -57,8 +57,8 @@ dependencies {
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
         implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
 
-        implementation("com.google.dagger:hilt-android:2.44")
-        kapt("com.google.dagger:hilt-android-compiler:2.44")
+        implementation("com.google.dagger:hilt-android:2.47")
+        kapt("com.google.dagger:hilt-android-compiler:2.47")
 
         implementation("androidx.room:room-runtime:2.5.1")
         kapt("androidx.room:room-compiler:2.5.1")
