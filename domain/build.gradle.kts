@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
     }
 
     buildTypes {
@@ -24,7 +24,6 @@ android {
     }
 
     compileOptions {
-        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
@@ -36,10 +35,10 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.20")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
     implementation("com.google.dagger:hilt-android:2.47")

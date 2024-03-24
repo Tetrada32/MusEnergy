@@ -67,8 +67,8 @@ dependencies {
     implementation("dev.chrisbanes.insetter:insetter-dbx:0.6.1")
     implementation("dev.chrisbanes.insetter:insetter:0.6.1")
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
     implementation("com.google.dagger:hilt-android:2.47")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
