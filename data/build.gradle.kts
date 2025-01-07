@@ -6,11 +6,10 @@ plugins {
 }
 
 android {
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 34
     }
 
     buildTypes {
@@ -38,20 +37,20 @@ dependencies {
     dependencies {
         implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-        coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
+        coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 
-        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.20")
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.1")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.22")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
 
-        implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+        implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
 
         implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.7")
         implementation("com.squareup.retrofit2:retrofit:2.9.0")
 
         implementation("com.google.code.gson:gson:2.10.1")
 
-        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
         implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
 
         implementation("com.google.dagger:hilt-android:2.47")
@@ -60,7 +59,7 @@ dependencies {
         implementation("androidx.room:room-runtime:2.6.1")
         kapt("androidx.room:room-compiler:2.6.1")
 
-        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
         implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
 
 
