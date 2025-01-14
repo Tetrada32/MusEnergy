@@ -2,15 +2,19 @@ package com.gahov.musenergy.feature.stories.video.preloader
 
 import android.content.Context
 import android.net.Uri
-import com.google.android.exoplayer2.upstream.DataSpec
-import com.google.android.exoplayer2.upstream.DefaultDataSource
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
-import com.google.android.exoplayer2.upstream.HttpDataSource
-import com.google.android.exoplayer2.upstream.cache.CacheDataSource
-import com.google.android.exoplayer2.upstream.cache.CacheWriter
-import com.google.android.exoplayer2.upstream.cache.SimpleCache
+import androidx.annotation.OptIn
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.datasource.DataSpec
+import androidx.media3.datasource.DefaultDataSource
+import androidx.media3.datasource.DefaultHttpDataSource
+import androidx.media3.datasource.HttpDataSource
+import androidx.media3.datasource.cache.CacheDataSource
+import androidx.media3.datasource.cache.CacheWriter
+import androidx.media3.datasource.cache.SimpleCache
+
 import javax.inject.Inject
 
+@OptIn(UnstableApi::class)
 class StoryMediaPreloadHelper @Inject constructor(
     private var context: Context,
     private var simpleCacheProvider: SimpleCache

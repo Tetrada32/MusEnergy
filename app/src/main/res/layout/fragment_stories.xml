@@ -41,7 +41,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
-        <com.google.android.exoplayer2.ui.StyledPlayerView
+        <androidx.media3.ui.PlayerView
             android:id="@+id/storiesVideoContainer"
             android:layout_width="0dp"
             android:layout_height="0dp"

@@ -1,6 +1,6 @@
 package com.gahov.musenergy.feature.stories.video.player
 
-import com.google.android.exoplayer2.PlaybackException
+import androidx.media3.common.PlaybackException
 
 interface StoryVideoPlayerController {
 

@@ -23,19 +23,19 @@ class StoriesRepositoryImpl : StoriesRepository {
             StoryEntity(
                 id = "1",
                 imageUrl = "",
-                videoUrl = "https://assets.mixkit.co/videos/preview/mixkit-young-mixed-rock-band-5125-large.mp4",
+                videoUrl = "https://assets.mixkit.co/videos/51930/51930-720.mp4",
                 videoDuration = 15000L,
             ),
             StoryEntity(
                 id = "2",
                 imageUrl = "",
-                videoUrl = "https://assets.mixkit.co/videos/preview/mixkit-guitarist-girl-seen-from-behind-while-playing-a-song-5122-large.mp4",
+                videoUrl = "https://assets.mixkit.co/videos/42812/42812-720.mp4",
                 videoDuration = 3800L,
             ),
             StoryEntity(
                 id = "4",
                 imageUrl = "",
-                videoUrl = "https://assets.mixkit.co/videos/preview/mixkit-person-playing-electric-guitar-close-up-3594-large.mp4",
+                videoUrl = "https://assets.mixkit.co/videos/51931/51931-720.mp4",
                 videoDuration = 5000L,
             )
         )

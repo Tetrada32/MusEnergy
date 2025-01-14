@@ -1,12 +1,14 @@
 package com.gahov.musenergy.arch.di.module
 
 import android.content.Context
+import androidx.annotation.OptIn
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.database.StandaloneDatabaseProvider
+import androidx.media3.datasource.cache.LeastRecentlyUsedCacheEvictor
+import androidx.media3.datasource.cache.SimpleCache
 import com.gahov.musenergy.feature.stories.video.player.StoriesPlayerManager
 import com.gahov.musenergy.feature.stories.video.preloader.PreloadHelper
 import com.gahov.musenergy.feature.stories.video.preloader.StoryMediaPreloadHelper
-import com.google.android.exoplayer2.database.StandaloneDatabaseProvider
-import com.google.android.exoplayer2.upstream.cache.LeastRecentlyUsedCacheEvictor
-import com.google.android.exoplayer2.upstream.cache.SimpleCache
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -14,6 +16,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+@OptIn(UnstableApi::class)
 @Module
 @InstallIn(SingletonComponent::class)
 class ExoModule {

@@ -1,25 +1,28 @@
 package com.gahov.musenergy.feature.stories.video.player
 
 import android.content.Context
+import androidx.annotation.OptIn
 import androidx.lifecycle.Lifecycle
-import com.google.android.exoplayer2.ExoPlayer
-import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.PlaybackException
-import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.Player.REPEAT_MODE_OFF
-import com.google.android.exoplayer2.source.DefaultMediaSourceFactory
-import com.google.android.exoplayer2.source.MediaSource
-import com.google.android.exoplayer2.source.ProgressiveMediaSource
-import com.google.android.exoplayer2.source.hls.HlsMediaSource
-import com.google.android.exoplayer2.ui.StyledPlayerView
-import com.google.android.exoplayer2.upstream.DataSource
-import com.google.android.exoplayer2.upstream.DefaultDataSource
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
-import com.google.android.exoplayer2.upstream.HttpDataSource
-import com.google.android.exoplayer2.upstream.cache.CacheDataSource
-import com.google.android.exoplayer2.upstream.cache.SimpleCache
+import androidx.media3.common.MediaItem
+import androidx.media3.common.PlaybackException
+import androidx.media3.common.Player
+import androidx.media3.common.Player.REPEAT_MODE_OFF
+import androidx.media3.common.util.UnstableApi
+import androidx.media3.datasource.DataSource
+import androidx.media3.datasource.DefaultDataSource
+import androidx.media3.datasource.DefaultHttpDataSource
+import androidx.media3.datasource.HttpDataSource
+import androidx.media3.datasource.cache.CacheDataSource
+import androidx.media3.datasource.cache.SimpleCache
+import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.hls.HlsMediaSource
+import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
+import androidx.media3.exoplayer.source.MediaSource
+import androidx.media3.exoplayer.source.ProgressiveMediaSource
+import androidx.media3.ui.PlayerView
 import javax.inject.Inject
 
+@OptIn(UnstableApi::class)
 class StoriesPlayerManager @Inject constructor(
     private val context: Context,
     simpleCacheProvider: SimpleCache
@@ -33,7 +36,7 @@ class StoriesPlayerManager @Inject constructor(
 
     private var presenter: StoryVideoPlayerController? = null
 
-    private var playerView: StyledPlayerView? = null
+    private var playerView: PlayerView? = null
 
     var isPlayerInitialized: Boolean = false
 
@@ -105,7 +108,7 @@ class StoriesPlayerManager @Inject constructor(
     fun setMediaSource(
         id: String,
         videoUrl: String,
-        playerView: StyledPlayerView
+        playerView: PlayerView
     ) {
         this.playerView = playerView
         simpleExoPlayer?.let {
@@ -169,7 +172,7 @@ class StoriesPlayerManager @Inject constructor(
         }
     }
 
-    fun getPlayerView(): StyledPlayerView? {
+    fun getPlayerView(): PlayerView? {
         return playerView
     }
 

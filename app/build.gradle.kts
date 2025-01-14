@@ -74,7 +74,12 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     kapt("com.google.dagger:hilt-android-compiler:2.47")
 
-    implementation("com.google.android.exoplayer:exoplayer:2.19.1")
+    implementation("androidx.media3:media3-exoplayer:1.5.1")
+    implementation("androidx.media3:media3-exoplayer-dash:1.5.1")
+    implementation("androidx.media3:media3-exoplayer-hls:1.5.1")
+    implementation("androidx.media3:media3-ui:1.5.1")
+    implementation("androidx.media3:media3-datasource:1.5.1")
+    implementation("androidx.media3:media3-session:1.5.1")
 
     implementation("androidx.startup:startup-runtime:1.2.0")
 

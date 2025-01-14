@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
+import androidx.media3.common.PlaybackException
 import androidx.navigation.fragment.findNavController
 import com.gahov.domain.entities.stories.StoryEntity
 import com.gahov.musenergy.R
@@ -17,7 +18,6 @@ import com.gahov.musenergy.feature.stories.command.StoriesCommand
 import com.gahov.musenergy.feature.stories.model.StoryModel
 import com.gahov.musenergy.feature.stories.video.player.StoriesPlayerManager
 import com.gahov.musenergy.feature.stories.video.player.StoryVideoPlayerController
-import com.google.android.exoplayer2.PlaybackException
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
