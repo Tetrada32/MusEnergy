@@ -35,17 +35,17 @@ Main technologies and libraries:
 - OkHttp
 - DataBinding
 - Coil 2
-- ExoPlayer 2
+- Media 3 (ex. ExoPlayer 2)
 
 
 # If you want to install the application via AS, or if you also want to contribute: 
 
 ## Requirements
-- Android Studio version "Giraffe" | 2022.3.1 or later
+- Android Studio version "Iguana" | 2023.2.1 or later
 - JDK version 17
-- Kotlin version 1.9.0
-- Gradle version 8.1
-- Android SDK version 34
+- Kotlin version 1.9.20
+- Gradle version 8.12
+- Android SDK version 35
 
 Android Studio and all required tools can be downloaded here: 
 `https://developer.android.com/studio`
