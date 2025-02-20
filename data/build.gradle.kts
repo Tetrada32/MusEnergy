@@ -3,6 +3,8 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("kotlinx-serialization")
+    id("com.google.dagger.hilt.android") version "2.51.1"
+//    id("com.google.devtools.ksp") version "2.1.10-1.0.30"
 }
 
 android {
@@ -39,25 +41,25 @@ dependencies {
 
         coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 
-        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.22")
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:2.0.10")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.10.1")
 
         implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
 
-        implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.7")
+        implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.9")
         implementation("com.squareup.retrofit2:retrofit:2.9.0")
 
-        implementation("com.google.code.gson:gson:2.10.1")
+        implementation("com.google.code.gson:gson:2.11.0")
 
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
         implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
 
-        implementation("com.google.dagger:hilt-android:2.47")
-        kapt("com.google.dagger:hilt-android-compiler:2.47")
+        implementation("com.google.dagger:hilt-android:2.51.1")
+        kapt("com.google.dagger:hilt-android-compiler:2.51.1")
 
-        implementation("androidx.room:room-runtime:2.6.1")
-        kapt("androidx.room:room-compiler:2.6.1")
+        implementation("androidx.room:room-runtime:2.7.0-beta01")
+        kapt("androidx.room:room-compiler:2.7.0-beta01")
 
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
         implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")

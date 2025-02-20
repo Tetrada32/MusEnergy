@@ -7,6 +7,5 @@
 
     <fragment
         android:id="@+id/fragment_favorites"
-        android:name="com.gahov.musenergy.feature.favorites.FavoritesFragment"
-        tools:layout="@layout/fragment_favorites" />
+        android:name="com.gahov.musenergy.feature.favorites.FavoritesFragment" />
 </navigation>

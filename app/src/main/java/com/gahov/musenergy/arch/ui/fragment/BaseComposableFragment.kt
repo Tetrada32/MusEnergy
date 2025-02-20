@@ -6,8 +6,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.annotation.LayoutRes
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.viewinterop.AndroidViewBinding
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -31,7 +35,9 @@ import com.gahov.musenergy.feature.main.BottomNavigationHost
 import com.gahov.musenergy.feature.main.MainActivity
 import javax.inject.Inject
 
-abstract class BaseFragment<B : ViewDataBinding, T : ViewModel>(
+//TODO complete this code
+
+abstract class BaseComposableFragment<B : ViewDataBinding, T : ViewModel>(
     @LayoutRes private val contentLayoutID: Int,
     private val viewModelClass: Class<T>,
 ) : Fragment(), BaseView, RouterProvider {
@@ -72,13 +78,32 @@ abstract class BaseFragment<B : ViewDataBinding, T : ViewModel>(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, contentLayoutID, container, false)
-        return binding.root
+//        binding = DataBindingUtil.inflate(inflater, contentLayoutID, container, false)
+
+        val composeView = ComposeView(requireContext()).apply {
+//            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                FragmentLayout()
+            }
+        }
+        return FrameLayout(requireContext()).apply {
+//            addView(binding.root)
+            addView(composeView)
+        }
+    }
+
+    @Composable
+    protected open fun FragmentLayout() {
+        AndroidViewBinding({ inflater, parent, attachToParent ->
+            DataBindingUtil.inflate(inflater, contentLayoutID, parent, attachToParent)
+        }) {
+            binding = this as B
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.lifecycleOwner = viewLifecycleOwner
+//        binding.lifecycleOwner = viewLifecycleOwner
         setBaseObservers()
         setObservers()
     }

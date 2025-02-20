@@ -2,20 +2,17 @@ package com.gahov.musenergy.arch.component.coil.impl
 
 import android.content.Context
 import com.gahov.musenergy.arch.component.coil.CoilImagePreloader
-import coil.ImageLoader
-import coil.annotation.ExperimentalCoilApi
-import coil.imageLoader
-import coil.request.CachePolicy
-import coil.request.ImageRequest
+import coil3.ImageLoader
+import coil3.imageLoader
+import coil3.request.CachePolicy
+import coil3.request.ImageRequest
 
-@OptIn(ExperimentalCoilApi::class)
 class CoilImagePreloaderImpl(private val context: Context) : CoilImagePreloader {
 
     override fun preloadSimpleResource(url: String, diskCacheKey: String) {
         val imageLoader: ImageLoader = context.imageLoader
         val request = ImageRequest.Builder(context)
             .data(url)
-            .addHeader("Cache-Control", "max-age=86400")
             .diskCacheKey(diskCacheKey)
             .memoryCachePolicy(CachePolicy.DISABLED)
             .diskCachePolicy(CachePolicy.WRITE_ONLY)

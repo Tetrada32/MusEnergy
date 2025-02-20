@@ -41,11 +41,6 @@ internal abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(FavoritesViewModel::class)
-    abstract fun bindFavoritesViewModel(viewModel: FavoritesViewModel): ViewModel
-
-    @Binds
-    @IntoMap
     @ViewModelKey(ProfileViewModel::class)
     abstract fun bindProfileViewModel(viewModel: ProfileViewModel): ViewModel
 

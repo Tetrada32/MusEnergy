@@ -4,6 +4,7 @@ import com.gahov.domain.repository.news.NewsRepository
 import com.gahov.domain.repository.news.SearchCategoriesRepository
 import com.gahov.domain.repository.stories.StoriesRepository
 import com.gahov.domain.usecase.news.categories.LoadSearchCategoriesUseCase
+import com.gahov.domain.usecase.news.favouties.LoadFavouritesUseCase
 import com.gahov.domain.usecase.news.frontpage.LoadFrontpageUseCase
 import com.gahov.domain.usecase.news.list.LoadArticleListUseCase
 import com.gahov.domain.usecase.stories.LoadStoriesListUseCase
@@ -48,5 +49,13 @@ class UseCaseModule {
         storiesRepository: StoriesRepository
     ) = LoadStoriesListUseCase(
         repository = storiesRepository
+    )
+
+    @Provides
+    @Singleton
+    internal fun provideLoadFavouritesListUseCase(
+        newsRepository: NewsRepository
+    ) = LoadFavouritesUseCase(
+        repository = newsRepository
     )
 }

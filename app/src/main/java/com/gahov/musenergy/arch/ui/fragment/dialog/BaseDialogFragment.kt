@@ -34,10 +34,10 @@ abstract class BaseDialogFragment<T : ViewDataBinding>(
         private set
 
     @Inject
-    protected open lateinit var logger: Logger
+    open lateinit var logger: Logger
 
     @Inject
-    protected open lateinit var failureHandler: ErrorHandler
+    open lateinit var failureHandler: ErrorHandler
 
     override val router: Router by lazy {
         NavComponentRouter(

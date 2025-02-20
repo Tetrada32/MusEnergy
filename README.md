@@ -34,7 +34,8 @@ Main technologies and libraries:
 - Retrofit 2 
 - OkHttp
 - DataBinding
-- Coil 2
+- Jetpack Compose (for new screens)
+- Coil 3
 - Media 3 (ex. ExoPlayer 2)
 
 
@@ -42,9 +43,9 @@ Main technologies and libraries:
 
 ## Requirements
 - Android Studio version "Iguana" | 2023.2.1 or later
-- JDK version 17
-- Kotlin version 1.9.20
-- Gradle version 8.12
+- JDK version 19
+- Kotlin version 2.0.10
+- Gradle version 8.14 
 - Android SDK version 35
 
 Android Studio and all required tools can be downloaded here: 
