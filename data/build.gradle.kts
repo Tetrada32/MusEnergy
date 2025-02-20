@@ -3,8 +3,8 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("kotlinx-serialization")
-    id("com.google.dagger.hilt.android") version "2.51.1"
-//    id("com.google.devtools.ksp") version "2.1.10-1.0.30"
+    id("com.google.dagger.hilt.android") version "2.55"
+    id("com.google.devtools.ksp") version "2.1.10-1.0.30"
 }
 
 android {
@@ -41,7 +41,7 @@ dependencies {
 
         coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 
-        implementation("org.jetbrains.kotlin:kotlin-stdlib:2.0.10")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:2.1.10")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.10.1")
 
@@ -55,15 +55,14 @@ dependencies {
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
         implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
 
-        implementation("com.google.dagger:hilt-android:2.51.1")
-        kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+        implementation("com.google.dagger:hilt-android:2.55")
+        ksp("com.google.dagger:hilt-android-compiler:2.55")
 
         implementation("androidx.room:room-runtime:2.7.0-beta01")
-        kapt("androidx.room:room-compiler:2.7.0-beta01")
+        ksp("androidx.room:room-compiler:2.7.0-beta01")
 
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
         implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
-
 
         implementation(project(":domain"))
     }

@@ -1,10 +1,9 @@
 plugins {
     kotlin("android")
-    kotlin("kapt")
     id("com.android.library")
     id("kotlin-parcelize")
-    id("com.google.dagger.hilt.android") version "2.51.1"
-//    id("com.google.devtools.ksp") version "2.1.10-1.0.30"
+    id("com.google.dagger.hilt.android") version "2.55"
+    id("com.google.devtools.ksp") version "2.1.10-1.0.30"
 }
 
 android {
@@ -38,10 +37,10 @@ dependencies {
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.0.10")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.1.10")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation("com.google.dagger:hilt-android:2.55")
+    ksp("com.google.dagger:hilt-android-compiler:2.55")
 }

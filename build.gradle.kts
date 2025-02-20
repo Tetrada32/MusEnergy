@@ -1,5 +1,5 @@
 buildscript {
-    val kotlinVersion by extra("2.0.10")
+    val kotlinVersion by extra("2.1.10")
 
     repositories {
         google()
@@ -14,12 +14,12 @@ buildscript {
 }
 
 plugins {
-    val kotlinVersion = "2.0.10"
+    val kotlinVersion = "2.1.10"
 
-    id("com.google.dagger.hilt.android") version "2.51.1" apply false
+    id("com.google.dagger.hilt.android") version "2.55" apply false
     id("org.jetbrains.kotlin.android") version kotlinVersion apply false
-    id("org.jetbrains.kotlin.kapt") version "2.0.10" apply false
-    id("com.google.devtools.ksp") version "2.0.10-1.0.24" apply false
+    id("org.jetbrains.kotlin.kapt") version "2.1.10" apply false
+    id("com.google.devtools.ksp") version "2.1.10-1.0.30" apply false
 }
 
 allprojects {
