@@ -11,13 +11,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
@@ -44,7 +44,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FavoritesFragment : Fragment() {
 
     //TODO it should be in another place
-    val circularXXFontFamily = FontFamily(
+    private val circularXXFontFamily = FontFamily(
         Font(R.font.circular_xx_book, FontWeight.Normal),
         Font(R.font.circular_xx_medium, FontWeight.Medium),
         Font(R.font.circular_xx_bold, FontWeight.Bold)
@@ -80,12 +80,12 @@ class FavoritesFragment : Fragment() {
     @Composable
     fun FavoriteItem(data: ArticleModel) {
         val imageUrl = (data.articleData.image as IconProvider.Url).url
-        Card(
+        ElevatedCard(
             colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                containerColor = Color.White,
             ),
             modifier = Modifier
-                .padding(16.dp)
+                .padding(top = 16.dp, start = 25.dp, end = 25.dp, bottom = 5.dp)
                 .height(325.dp)
                 .fillMaxWidth()
         ) {
@@ -99,16 +99,33 @@ class FavoritesFragment : Fragment() {
                     contentDescription = "Image"
                 )
                 Text(
-                    modifier = Modifier.padding(16.dp),
+                    text = data.articleData.sourceName.getString(requireContext()),
+                    Modifier.padding(start = 25.dp, end = 25.dp, top = 20.dp, bottom = 2.dp),
+                    maxLines = 1,
+                    style = TextStyle(
+                        fontFamily = circularXXFontFamily,
+                        fontStyle = FontStyle.Normal,
+                        fontSize = 14.sp,
+                        color = Color(0xff8d9199),
+                    )
+                )
+                Text(
+                    modifier = Modifier.padding(
+                        start = 25.dp,
+                        top = 10.dp,
+                        end = 25.dp,
+                        bottom = 12.dp
+                    ),
                     text = data.articleData.title.getString(requireContext()),
                     maxLines = 3,
                     overflow = TextOverflow.Ellipsis,
                     softWrap = true,
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Left,
                     style = TextStyle(
                         fontFamily = circularXXFontFamily,
-                        fontStyle = FontStyle.Normal,
-                        fontSize = 16.sp
+                        fontSize = 24.sp,
+                        color = Color(0xFF202226),
+                        fontWeight = FontWeight.Bold
                     )
                 )
             }
