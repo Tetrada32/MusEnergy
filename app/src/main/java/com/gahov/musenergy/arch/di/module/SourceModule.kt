@@ -1,8 +1,11 @@
 package com.gahov.musenergy.arch.di.module
 
+import com.gahov.musenergy.data.local.storage.articles.ArticlesDao
 import com.gahov.musenergy.data.remote.protocol.MainProtocol
-import com.gahov.musenergy.data.source.news.NewsRemoteSource
-import com.gahov.musenergy.data.source.news.NewsRemoteSourceImpl
+import com.gahov.musenergy.data.source.articles.ArticlesLocalSource
+import com.gahov.musenergy.data.source.articles.ArticlesLocalSourceImpl
+import com.gahov.musenergy.data.source.articles.ArticlesRemoteSource
+import com.gahov.musenergy.data.source.articles.ArticlesRemoteSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,11 +18,21 @@ class SourceModule {
 
     @Provides
     @Singleton
-    internal fun provideNewsRemoteSource(
-       newsProtocol: MainProtocol
-    ): NewsRemoteSource {
-        return NewsRemoteSourceImpl(
-           protocol = newsProtocol
+    internal fun provideArticlesRemoteSource(
+        newsProtocol: MainProtocol
+    ): ArticlesRemoteSource {
+        return ArticlesRemoteSourceImpl(
+            protocol = newsProtocol
+        )
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideArticlesLocalSource(
+        articlesDao: ArticlesDao
+    ): ArticlesLocalSource {
+        return ArticlesLocalSourceImpl(
+            articlesDao = articlesDao
         )
     }
 }

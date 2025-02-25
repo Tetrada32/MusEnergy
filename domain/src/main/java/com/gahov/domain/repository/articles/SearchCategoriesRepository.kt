@@ -1,8 +1,8 @@
-package com.gahov.domain.repository.news
+package com.gahov.domain.repository.articles
 
 import com.gahov.domain.entities.common.Either
 import com.gahov.domain.entities.failure.Failure
-import com.gahov.domain.entities.news.CategoryEntity
+import com.gahov.domain.entities.articles.CategoryEntity
 
 interface SearchCategoriesRepository {
 

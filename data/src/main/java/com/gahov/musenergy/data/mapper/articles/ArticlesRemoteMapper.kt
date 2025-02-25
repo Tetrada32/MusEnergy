@@ -1,10 +1,10 @@
-package com.gahov.musenergy.data.mapper.news
+package com.gahov.musenergy.data.mapper.articles
 
-import com.gahov.domain.entities.news.ArticleEntity
+import com.gahov.domain.entities.articles.ArticleEntity
 import com.gahov.musenergy.data.mapper.common.ApiMapper
 import com.gahov.musenergy.data.remote.entities.article.ArticleResponse
 
-class ArticleRemoteMapper :
+class ArticlesRemoteMapper :
     ApiMapper<ArticleResponse, ArticleEntity> {
     override fun toDomain(apiModel: ArticleResponse): ArticleEntity {
         return ArticleEntity(
@@ -17,6 +17,7 @@ class ArticleRemoteMapper :
             urlToImage = apiModel.urlToImage,
             publishedAt = apiModel.publishedAt,
             content = apiModel.content,
+            id = apiModel.title?.hashCode()?.toLong()
         )
     }
 }

@@ -1,18 +1,18 @@
-package com.gahov.musenergy.data.repository.news
+package com.gahov.musenergy.data.repository.articles
 
 import com.gahov.domain.entities.common.Either
 import com.gahov.domain.entities.failure.Failure
-import com.gahov.domain.entities.news.ArticleEntity
+import com.gahov.domain.entities.articles.ArticleEntity
 import com.gahov.domain.entities.search.SearchNewsCategory
-import com.gahov.domain.repository.news.NewsRepository
-import com.gahov.musenergy.data.mapper.news.ArticleRemoteMapper
+import com.gahov.domain.repository.articles.ArticlesRepository
+import com.gahov.musenergy.data.mapper.articles.ArticlesRemoteMapper
 import com.gahov.musenergy.data.remote.entities.success.ArticleSuccessResponse
-import com.gahov.musenergy.data.source.news.NewsRemoteSource
+import com.gahov.musenergy.data.source.articles.ArticlesRemoteSource
 
-class NewsRepositoryImpl constructor(
-    private val remoteSource: NewsRemoteSource,
-    private val articleRemoteMapper: ArticleRemoteMapper
-) : NewsRepository {
+class ArticlesRepositoryImpl(
+    private val remoteSource: ArticlesRemoteSource,
+    private val articlesRemoteMapper: ArticlesRemoteMapper
+) : ArticlesRepository {
 
     override suspend fun loadEverything(): Either<Failure, List<ArticleEntity>> {
         return when (val result = remoteSource.loadEverything()) {
@@ -31,7 +31,7 @@ class NewsRepositoryImpl constructor(
     private fun mapApiResponseToDomain(
         response: ArticleSuccessResponse
     ): List<ArticleEntity> {
-        return response.articleResponses?.map { list -> articleRemoteMapper.toDomain(apiModel = list) }
+        return response.articleResponses?.map { list -> articlesRemoteMapper.toDomain(apiModel = list) }
             ?: emptyList()
     }
 }

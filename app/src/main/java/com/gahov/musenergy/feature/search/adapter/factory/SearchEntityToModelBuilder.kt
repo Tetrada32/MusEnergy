@@ -1,6 +1,6 @@
 package com.gahov.musenergy.feature.search.adapter.factory
 
-import com.gahov.domain.entities.news.CategoryEntity
+import com.gahov.domain.entities.articles.CategoryEntity
 import com.gahov.domain.entities.search.SearchNewsCategory
 import com.gahov.musenergy.arch.ui.view.model.IconProvider
 import com.gahov.musenergy.arch.ui.view.model.TextProvider

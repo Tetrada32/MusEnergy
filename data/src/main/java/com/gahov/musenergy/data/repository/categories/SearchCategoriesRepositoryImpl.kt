@@ -3,9 +3,9 @@ package com.gahov.musenergy.data.repository.categories
 import com.gahov.domain.entities.common.Either
 import com.gahov.domain.entities.common.right
 import com.gahov.domain.entities.failure.Failure
-import com.gahov.domain.entities.news.CategoryEntity
+import com.gahov.domain.entities.articles.CategoryEntity
 import com.gahov.domain.entities.search.SearchNewsCategory
-import com.gahov.domain.repository.news.SearchCategoriesRepository
+import com.gahov.domain.repository.articles.SearchCategoriesRepository
 
 class SearchCategoriesRepositoryImpl : SearchCategoriesRepository {
 

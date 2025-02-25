@@ -8,8 +8,7 @@ import java.io.Serializable
 sealed class ArticleModel(
     private val id: String,
     open val articleData: BaseArticleData
-) :
-    Serializable {
+) : Serializable {
 
     data class DefaultArticle(
         val id: String = DEFAULT_ARTICLE_ID,
@@ -56,6 +55,7 @@ sealed class ArticleModel(
 }
 
 data class BaseArticleData(
+    val itemId: Long?,
     val image: IconProvider,
     val title: TextProvider,
     val description: TextProvider,
@@ -64,5 +64,6 @@ data class BaseArticleData(
     val publishedAt: TextProvider,
     val content: TextProvider,
     val sourceId: TextProvider,
-    val sourceName: TextProvider
+    val sourceName: TextProvider,
+    var isFavorite: Boolean
 ) : Serializable

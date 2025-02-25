@@ -1,11 +1,11 @@
-package com.gahov.musenergy.data.source.news
+package com.gahov.musenergy.data.source.articles
 
 import com.gahov.domain.entities.common.Either
 import com.gahov.domain.entities.failure.Failure
 import com.gahov.domain.entities.search.SearchNewsCategory
 import com.gahov.musenergy.data.remote.entities.success.ArticleSuccessResponse
 
-interface NewsRemoteSource {
+interface ArticlesRemoteSource {
 
     suspend fun loadEverything(): Either<Failure, ArticleSuccessResponse>
 

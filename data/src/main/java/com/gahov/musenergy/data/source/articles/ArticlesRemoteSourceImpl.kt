@@ -1,4 +1,4 @@
-package com.gahov.musenergy.data.source.news
+package com.gahov.musenergy.data.source.articles
 
 import com.gahov.domain.entities.common.Either
 import com.gahov.domain.entities.failure.Failure
@@ -7,9 +7,9 @@ import com.gahov.musenergy.data.remote.call
 import com.gahov.musenergy.data.remote.entities.success.ArticleSuccessResponse
 import com.gahov.musenergy.data.remote.protocol.MainProtocol
 
-class NewsRemoteSourceImpl(
+class ArticlesRemoteSourceImpl(
     private val protocol: MainProtocol,
-) : NewsRemoteSource {
+) : ArticlesRemoteSource {
 
     override suspend fun loadEverything(): Either<Failure, ArticleSuccessResponse> {
         return call { protocol.getNewsList(SearchNewsCategory.CATEGORY_ALL.id) }

@@ -12,24 +12,27 @@ class StoriesRepositoryImpl : StoriesRepository {
         return right(getHardcodedStoriesList())
     }
 
+    /**
+     * The content is hardcoded as I don't have functionally for adding stories fow now :D
+     */
     private fun getHardcodedStoriesList(): List<StoryEntity> {
         return listOf(
             StoryEntity(
                 id = "0",
                 imageUrl = "",
-                videoUrl = "https://assets.mixkit.co/videos/preview/mixkit-young-woman-playing-a-white-electric-guitar-5123-large.mp4",
+                videoUrl = "https://videos.pexels.com/video-files/3189294/3189294-sd_360_640_25fps.mp4",
                 videoDuration = 12000L,
             ),
             StoryEntity(
                 id = "1",
                 imageUrl = "",
-                videoUrl = "https://assets.mixkit.co/videos/51930/51930-720.mp4",
+                videoUrl = "https://videos.pexels.com/video-files/2795746/2795746-sd_360_640_25fps.mp4",
                 videoDuration = 15000L,
             ),
             StoryEntity(
                 id = "2",
                 imageUrl = "",
-                videoUrl = "https://assets.mixkit.co/videos/42812/42812-720.mp4",
+                videoUrl = "https://videos.pexels.com/video-files/3713449/3713449-sd_506_960_25fps.mp4",
                 videoDuration = 3800L,
             ),
             StoryEntity(

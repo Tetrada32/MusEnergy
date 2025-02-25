@@ -1,4 +1,4 @@
-package com.gahov.domain.entities.news
+package com.gahov.domain.entities.articles
 
 data class CategoryEntity(
     val id: String? = null,

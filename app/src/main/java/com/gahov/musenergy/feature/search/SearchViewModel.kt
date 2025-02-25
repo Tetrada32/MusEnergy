@@ -2,9 +2,9 @@ package com.gahov.musenergy.feature.search
 
 import androidx.lifecycle.LiveData
 import com.gahov.domain.entities.common.Either
-import com.gahov.domain.entities.news.CategoryEntity
+import com.gahov.domain.entities.articles.CategoryEntity
 import com.gahov.domain.entities.search.SearchNewsCategory
-import com.gahov.domain.usecase.news.categories.LoadSearchCategoriesUseCase
+import com.gahov.domain.usecase.articles.categories.LoadSearchCategoriesUseCase
 import com.gahov.musenergy.arch.controller.BaseViewModel
 import com.gahov.musenergy.arch.lifecycle.SingleLiveEvent
 import com.gahov.musenergy.feature.search.adapter.factory.SearchEntityToModelBuilder

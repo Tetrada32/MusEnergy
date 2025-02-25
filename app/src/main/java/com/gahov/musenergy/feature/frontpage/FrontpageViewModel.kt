@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import com.gahov.domain.component.logger.Logger
 import com.gahov.domain.entities.common.Either
 import com.gahov.domain.entities.failure.Failure
-import com.gahov.domain.entities.news.ArticleEntity
-import com.gahov.domain.usecase.news.frontpage.LoadFrontpageUseCase
+import com.gahov.domain.entities.articles.ArticleEntity
+import com.gahov.domain.usecase.articles.frontpage.LoadFrontpageUseCase
 import com.gahov.musenergy.arch.controller.BaseViewModel
 import com.gahov.musenergy.feature.articles.factory.ArticleEntityBuilder
 import com.gahov.musenergy.feature.articles.model.ArticleModel

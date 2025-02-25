@@ -9,8 +9,12 @@ class DefaultCoroutineLauncher(
     handleFailure: ((Failure) -> Unit)? = null
 ) : CoroutineLauncher {
 
-    override fun launch(supervisor: Boolean, block: suspend CoroutineScope.() -> Unit): Job {
-        return scope.launch(errorHandler) {
+    override fun launch(
+        supervisor: Boolean,
+        dispatcher: CoroutineDispatcher,
+        block: suspend CoroutineScope.() -> Unit
+    ): Job {
+        return scope.launch(errorHandler + dispatcher) {
             if (supervisor) {
                 supervisorScope {
                     block.invoke(this)

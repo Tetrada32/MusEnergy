@@ -13,14 +13,16 @@ import com.gahov.musenergy.arch.lifecycle.SingleLiveEvent
 import com.gahov.musenergy.arch.provider.CoroutineProvider
 import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.router.command.NavDirection
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 
 abstract class BaseViewModel : ViewModel(), Controller, CoroutineProvider {
 
     override val launcher: CoroutineLauncher by lazy {
         DefaultCoroutineLauncher(
-            viewModelScope,
-            ::handleFailure
+            scope = viewModelScope,
+            handleFailure = ::handleFailure
         )
     }
 
@@ -48,7 +50,10 @@ abstract class BaseViewModel : ViewModel(), Controller, CoroutineProvider {
         _command.postValue(command)
     }
 
-    fun launch(block: suspend CoroutineScope.() -> Unit) = launcher.launch(block = block)
+    fun launch(
+        dispatcher: CoroutineDispatcher = Dispatchers.IO,
+        block: suspend CoroutineScope.() -> Unit
+    ) = launcher.launch(dispatcher = dispatcher, block = block)
 
     override fun showMessage(message: TextProvider) {
         _message.value = message

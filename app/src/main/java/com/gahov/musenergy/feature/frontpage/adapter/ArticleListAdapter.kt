@@ -20,7 +20,7 @@ class ArticleListAdapter(
         parent: ViewGroup,
         viewType: Int
     ): BaseViewHolder<ArticleModel, out ViewDataBinding> {
-        return when (ArticleViewType.values()[viewType]) {
+        return when (ArticleViewType.entries[viewType]) {
             ArticleViewType.INITIAL_ARTICLE -> InitialArticleViewHolder(
                 presenter = presenter,
                 binding = inflate(parent, R.layout.item_frontpage_initial_article)

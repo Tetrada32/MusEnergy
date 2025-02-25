@@ -32,7 +32,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.text.TextStyle
@@ -41,7 +40,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
@@ -69,10 +67,13 @@ class FavoritesFragment : Fragment() {
         }
     }
 
+
     @Preview
     @Composable
     fun FavoritesScreen() {
         val viewModel: FavoritesViewModel = hiltViewModel()
+        viewModel.loadFavouritesContent()
+
         val favourites = viewModel.favouritesArticles.observeAsState().value ?: emptyList()
 
         LazyColumn(Modifier.fillMaxSize()) {

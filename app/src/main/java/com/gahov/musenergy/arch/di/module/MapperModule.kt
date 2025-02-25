@@ -1,6 +1,7 @@
 package com.gahov.musenergy.arch.di.module
 
-import com.gahov.musenergy.data.mapper.news.ArticleRemoteMapper
+import com.gahov.musenergy.data.mapper.articles.ArticlesLocalMapper
+import com.gahov.musenergy.data.mapper.articles.ArticlesRemoteMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,5 +14,9 @@ class MapperModule {
 
     @Provides
     @Singleton
-    internal fun provideArticleRemoteMapper(): ArticleRemoteMapper = ArticleRemoteMapper()
+    internal fun provideArticleRemoteMapper(): ArticlesRemoteMapper = ArticlesRemoteMapper()
+
+    @Provides
+    @Singleton
+    internal fun provideArticleLocalMapper(): ArticlesLocalMapper = ArticlesLocalMapper()
 }

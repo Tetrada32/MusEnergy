@@ -2,10 +2,10 @@ package com.gahov.musenergy.feature.articles.list
 
 import com.gahov.domain.entities.common.Either
 import com.gahov.domain.entities.failure.Failure
-import com.gahov.domain.entities.news.ArticleCategoryParams
-import com.gahov.domain.entities.news.ArticleEntity
+import com.gahov.domain.entities.articles.params.ArticleCategoryParams
+import com.gahov.domain.entities.articles.ArticleEntity
 import com.gahov.domain.entities.search.SearchNewsCategory
-import com.gahov.domain.usecase.news.list.LoadArticleListUseCase
+import com.gahov.domain.usecase.articles.list.LoadArticleListUseCase
 import com.gahov.musenergy.arch.controller.BaseViewModel
 import com.gahov.musenergy.feature.articles.factory.ArticleEntityBuilder
 import com.gahov.musenergy.feature.articles.list.command.ArticleListCommand
