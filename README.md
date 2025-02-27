@@ -1,6 +1,10 @@
 # MusEnergy
 Welcome to Android "MusEnergy", which is currently at version 0.0.1  :)  
-This project is about music. It collects various news about music on the internet and shows articles. 
+
+This is my personal Demo project which is my Sandbox. Here I experiment with Android development technologies, 
+and also demonstrate my skills and approaches in programming.
+
+This project is about music. For now, It collects various articles about music on the internet and shows articles. 
 You can also search news by category and genre.
 
 ### NOTE: The project is currently under development and is about 33% complete!
@@ -15,13 +19,13 @@ In this application, I sort the articles in the request by key music tags in @Qu
 ### Current state: 
 At the moment, the main screen with various articles on the topic of music, as well as the category search screen, has been implemented.
 There is also a screen "Article Details".
-On the details screen, it is possible to share the news, or go to the original site.
-Moreover, through the main screen, you can get to the "Stories" screen, where hard-coded videos are shown.
+On the details screen, it is possible to share the article, add to favorites or go to the original site.
 
 ### Future: 
-It is planned to implement the "Favorites" screen, where the articles that the user likes will be saved. 
-As well as "profile" and "settings" screens.
-Stories are supposed to be not hard-coded. 
+It is planned to implement something related with video-content. The player is already in the project,
+but so far I have no ideas how to use it :D There's deprecated hardcoded Storied feature which I disabled for now. 
+
+Also I'm going to add "profile" and "settings" screens, and implement manual searching.
 
 ### Technologies: 
 The application is developed in accordance with the best practices recommended in Android development.
@@ -52,7 +56,7 @@ Android Studio and all required tools can be downloaded here:
 `https://developer.android.com/studio`
 
 ## Installation 
-##### This project is not publicly available. Please contact the project's owner to get access to the repository. Then, to run the project, please follow the instructions below: 
+##### To run the project, please follow the instructions below: 
 
 - Clone this repository to your local machine using git clone `https://github.com/username/project-name.git`
 - Open the project in Android Studio.
@@ -67,7 +71,7 @@ Android Studio and all required tools can be downloaded here:
 and [Official Kotlin coding conventions](https://kotlinlang.org/docs/coding-conventions.html).
 The code style is enforced using [Spotless](https://github.com/diffplug/spotless) and [Ktlint](https://github.com/pinterest/ktlint) plugins.
 - The only language is 100% Kotlin. 
-- Please make sure you don't leave extra commented out lines, logs, hard code, etc., which can make the code visually difficult to read.
+- Please try to not leave extra commented out lines, logs, hard code, etc., which can make the code visually difficult to read.
 
 ##### Git 
 
@@ -101,7 +105,7 @@ Longer description (wrap at 72 characters)
     * `release` - release branch 
 
 ## Contributing 
-##### Make sure you have write access first. To contribute, please follow the instructions below: 
+##### To contribute, please follow the instructions below: 
 - Install the project according to the instructions above
 - Create a new branch (`git checkout -b feature/<ticket-name>/your-feature-name`)
 - Make your changes 
