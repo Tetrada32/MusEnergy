@@ -1,5 +1,6 @@
 package com.gahov.musenergy.data.repository.favorites
 
+import com.gahov.domain.component.logger.Logger
 import com.gahov.domain.entities.articles.ArticleEntity
 import com.gahov.domain.entities.common.Either
 import com.gahov.domain.entities.failure.Failure
@@ -11,10 +12,12 @@ import kotlinx.coroutines.flow.map
 
 class FavoritesRepositoryImpl(
     private val localSource: ArticlesLocalSource,
-    private val localMapper: ArticlesLocalMapper
+    private val localMapper: ArticlesLocalMapper,
+    private val logger: Logger
 ) : FavoritesRepository {
 
     override suspend fun fetchAllFavorites(): Flow<Either<Failure, List<ArticleEntity>>> {
+        logger.log(message = "Favorites Repository() request")
         return localSource.fetchFavorites().map { result ->
             when (result) {
                 is Either.Left -> result

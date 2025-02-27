@@ -1,5 +1,6 @@
 package com.gahov.musenergy.arch.di.module
 
+import com.gahov.domain.component.logger.Logger
 import com.gahov.musenergy.data.local.storage.articles.ArticlesDao
 import com.gahov.musenergy.data.remote.protocol.MainProtocol
 import com.gahov.musenergy.data.source.articles.ArticlesLocalSource
@@ -29,10 +30,12 @@ class SourceModule {
     @Provides
     @Singleton
     internal fun provideArticlesLocalSource(
-        articlesDao: ArticlesDao
+        articlesDao: ArticlesDao,
+        logger: Logger
     ): ArticlesLocalSource {
         return ArticlesLocalSourceImpl(
-            articlesDao = articlesDao
+            articlesDao = articlesDao,
+            logger = logger
         )
     }
 }

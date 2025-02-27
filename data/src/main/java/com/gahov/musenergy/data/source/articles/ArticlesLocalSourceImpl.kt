@@ -1,14 +1,18 @@
 package com.gahov.musenergy.data.source.articles
 
+import com.gahov.domain.component.logger.Logger
 import com.gahov.domain.entities.common.Either
 import com.gahov.domain.entities.failure.Failure
 import com.gahov.musenergy.data.local.entities.ArticleDTO
 import com.gahov.musenergy.data.local.storage.articles.ArticlesDao
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 class ArticlesLocalSourceImpl(
-    private val articlesDao: ArticlesDao
+    private val articlesDao: ArticlesDao,
+    private val logger: Logger
 ) : ArticlesLocalSource {
 
     override suspend fun fetchEverything(): Either<Failure, List<ArticleDTO>> {
@@ -52,13 +56,13 @@ class ArticlesLocalSourceImpl(
     }
 
     override suspend fun fetchFavorites(): Flow<Either<Failure, List<ArticleDTO>>> {
+        logger.log(message = "Favorites Local Source() request")
+
         return flow {
-            try {
-                Either.Right(articlesDao.fetchFavorites())
-            } catch (e: Exception) {
-                Either.Left(Failure.DataSourceException(e))
+            articlesDao.fetchFavorites().collect {
+                emit(Either.Right(success = it))
             }
-        }
+        }.flowOn(Dispatchers.IO)
     }
 
     override suspend fun deleteAllFavorites(): Either<Failure, Unit> {

@@ -72,7 +72,6 @@ class FavoritesFragment : Fragment() {
     @Composable
     fun FavoritesScreen() {
         val viewModel: FavoritesViewModel = hiltViewModel()
-        viewModel.loadFavouritesContent()
 
         val favourites = viewModel.favouritesArticles.observeAsState().value ?: emptyList()
 

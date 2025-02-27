@@ -21,11 +21,15 @@ class FavoritesViewModel @Inject constructor(
     private val logger: Logger,
 ) : BaseViewModel() {
 
+    init {
+        loadFavouritesContent()
+    }
+
     private val _loadedContent = SingleLiveEvent<List<ArticleModel>>()
     val favouritesArticles: LiveData<List<ArticleModel>>
         get() = _loadedContent
 
-    fun loadFavouritesContent() {
+    private fun loadFavouritesContent() {
         launch {
             fetchFavouritesUseCase.execute().collect { result ->
                 when (result) {
@@ -37,11 +41,12 @@ class FavoritesViewModel @Inject constructor(
     }
 
     private fun onResultSuccess(articleRawList: List<ArticleEntity>) {
+        logger.log(message = "Favorites List: fetch result: \n $articleRawList")
         val formattedList = articleEntityBuilder.get().buildFrontpageList(articleRawList)
         _loadedContent.postValue(formattedList)
     }
 
     private fun onResultFailure(failureResult: Failure) {
-        logger.log(message = "Failure: \n $failureResult")
+        logger.log(message = "Favorites List: fetch Failure: \n $failureResult")
     }
 }

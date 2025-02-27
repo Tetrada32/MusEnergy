@@ -1,5 +1,6 @@
 package com.gahov.musenergy.arch.di.module
 
+import com.gahov.domain.component.logger.Logger
 import com.gahov.domain.repository.articles.ArticlesRepository
 import com.gahov.domain.repository.articles.SearchCategoriesRepository
 import com.gahov.domain.repository.favorites.FavoritesRepository
@@ -50,11 +51,13 @@ class RepositoryModule {
     @Singleton
     internal fun provideFavoritesRepository(
         articlesLocalSource: ArticlesLocalSource,
-        articlesLocalMapper: ArticlesLocalMapper
+        articlesLocalMapper: ArticlesLocalMapper,
+        logger: Logger
     ): FavoritesRepository {
         return FavoritesRepositoryImpl(
             localSource = articlesLocalSource,
-            localMapper = articlesLocalMapper
+            localMapper = articlesLocalMapper,
+            logger = logger
         )
     }
 }

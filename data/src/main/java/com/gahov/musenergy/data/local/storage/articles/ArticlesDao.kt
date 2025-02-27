@@ -19,7 +19,7 @@ interface ArticlesDao {
     @Query("SELECT * FROM articles WHERE id = :id")
     fun getItemById(id: Long): ArticleDTO
 
-    @Query("SELECT * FROM articles WHERE isFavorite = 1")
+    @Query("SELECT * FROM articles")
     fun fetchFavorites(): Flow<List<ArticleDTO>>
 
     @Query("DELETE FROM articles WHERE id = :id AND isFavorite = 1")
