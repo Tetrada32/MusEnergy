@@ -185,7 +185,8 @@ class FavoritesFragment : Fragment() {
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(350.dp)
+                    .height(320.dp)
+                    .padding(top = 36.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(
