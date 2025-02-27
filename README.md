@@ -3,7 +3,7 @@ Welcome to Android "MusEnergy", which is currently at version 0.0.1  :)
 This project is about music. It collects various news about music on the internet and shows articles. 
 You can also search news by category and genre.
 
-### NOTE: The project is currently under development and is about 30% complete!
+### NOTE: The project is currently under development and is about 33% complete!
 
 
 ## Project description 
@@ -42,9 +42,9 @@ Main technologies and libraries:
 # If you want to install the application via AS, or if you also want to contribute: 
 
 ## Requirements
-- Android Studio version "Iguana" | 2023.2.1 or later
+- Android Studio "Ladybug Feature Drop" | 2024.2.2 or later
 - JDK version 19
-- Kotlin version 2.0.10
+- Kotlin version 2.1.10
 - Gradle version 8.14 
 - Android SDK version 35
 
@@ -63,10 +63,10 @@ Android Studio and all required tools can be downloaded here:
 ## Code style 
 
 ##### Kotlin
-- In this project we follow [general Android code-style guide](https://source.android.com/docs/core/architecture/hidl/code-style)
+- In this project I follow [general Android code-style guide](https://source.android.com/docs/core/architecture/hidl/code-style)
 and [Official Kotlin coding conventions](https://kotlinlang.org/docs/coding-conventions.html).
 The code style is enforced using [Spotless](https://github.com/diffplug/spotless) and [Ktlint](https://github.com/pinterest/ktlint) plugins.
-- The only language is 100% Kotlin, we don't use Java. 
+- The only language is 100% Kotlin. 
 - Please make sure you don't leave extra commented out lines, logs, hard code, etc., which can make the code visually difficult to read.
 
 ##### Git 
