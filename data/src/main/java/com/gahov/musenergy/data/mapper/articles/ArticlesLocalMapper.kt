@@ -10,6 +10,7 @@ class ArticlesLocalMapper : DbMapper<ArticleEntity, ArticleDTO> {
         return ArticleDTO(
             id = domainModel.id,
             image = domainModel.urlToImage,
+            title = domainModel.title,
             description = domainModel.description,
             author = domainModel.author,
             urlToSource = domainModel.url,
@@ -25,6 +26,7 @@ class ArticlesLocalMapper : DbMapper<ArticleEntity, ArticleDTO> {
         return ArticleEntity(
             id = dbModel.id,
             urlToImage = dbModel.image,
+            title = dbModel.title,
             description = dbModel.description,
             author = dbModel.author,
             url = dbModel.urlToSource,

@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.MusEnergy"
-        tools:targetApi="33">
+        tools:targetApi="35">
 
         <activity
             android:name=".feature.main.MainActivity"

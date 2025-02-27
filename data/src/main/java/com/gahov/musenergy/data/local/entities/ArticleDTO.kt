@@ -14,6 +14,7 @@ import androidx.room.PrimaryKey
 )
 data class ArticleDTO(
     var id: Long? = 0,
+    var title: String? = "",
     var image: String? = "",
     var description: String? = "",
     var author: String? = "",

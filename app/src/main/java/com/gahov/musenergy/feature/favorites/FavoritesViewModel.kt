@@ -8,25 +8,27 @@ import com.gahov.domain.entities.failure.Failure
 import com.gahov.domain.usecase.articles.favorites.FetchFavouritesUseCase
 import com.gahov.musenergy.arch.controller.BaseViewModel
 import com.gahov.musenergy.arch.lifecycle.SingleLiveEvent
-import com.gahov.musenergy.feature.articles.factory.ArticleEntityBuilder
-import com.gahov.musenergy.feature.articles.model.ArticleModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import javax.inject.Provider
 
 @HiltViewModel
 class FavoritesViewModel @Inject constructor(
     private val fetchFavouritesUseCase: FetchFavouritesUseCase,
-    private val articleEntityBuilder: Provider<ArticleEntityBuilder>,
     private val logger: Logger,
 ) : BaseViewModel() {
+
+    companion object {
+        //TODO do not keep it here :D
+        val placeholderImage =
+            "https://www.roadiemusic.com/blog/wp-content/uploads/2020/02/Is-Rock-Music-Dead.png"
+    }
 
     init {
         loadFavouritesContent()
     }
 
-    private val _loadedContent = SingleLiveEvent<List<ArticleModel>>()
-    val favouritesArticles: LiveData<List<ArticleModel>>
+    private val _loadedContent = SingleLiveEvent<List<ArticleEntity>>()
+    val favouritesArticles: LiveData<List<ArticleEntity>>
         get() = _loadedContent
 
     private fun loadFavouritesContent() {
@@ -40,13 +42,16 @@ class FavoritesViewModel @Inject constructor(
         }
     }
 
-    private fun onResultSuccess(articleRawList: List<ArticleEntity>) {
-        logger.log(message = "Favorites List: fetch result: \n $articleRawList")
-        val formattedList = articleEntityBuilder.get().buildFrontpageList(articleRawList)
-        _loadedContent.postValue(formattedList)
+    private fun onResultSuccess(favoritesArticles: List<ArticleEntity>) {
+        logger.log(message = "Favorites List: fetch result: \n $favoritesArticles")
+        _loadedContent.postValue(favoritesArticles)
     }
 
     private fun onResultFailure(failureResult: Failure) {
         logger.log(message = "Favorites List: fetch Failure: \n $failureResult")
+    }
+
+    fun removeFromFavorites(article: ArticleEntity) {
+        //TODO
     }
 }

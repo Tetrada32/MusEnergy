@@ -1,10 +1,8 @@
 package com.gahov.musenergy.feature.articles.factory
 
 
-import android.content.Context
 import com.gahov.domain.entities.articles.ArticleEntity
 import com.gahov.domain.entities.search.SearchNewsCategory
-import com.gahov.musenergy.arch.ktx.getString
 import com.gahov.musenergy.arch.ui.view.model.IconProvider
 import com.gahov.musenergy.arch.ui.view.model.TextProvider
 import com.gahov.musenergy.feature.articles.model.ArticleModel
@@ -83,26 +81,6 @@ class ArticleEntityToModelBuilder : ArticleEntityBuilder {
             sourceId = TextProvider.Text(text = articleEntity.sourceId.toString()),
             sourceName = TextProvider.Text(text = articleEntity.sourceName.toString()),
             isFavorite = articleEntity.isFavorite
-        )
-    }
-
-    //TODO temporary solution
-    override fun buildDomainArticleFromView(
-        context: Context,
-        baseArticleData: BaseArticleData?
-    ): ArticleEntity {
-        return ArticleEntity(
-            id = baseArticleData?.itemId,
-            author = baseArticleData?.author?.getString(context = context),
-            title = baseArticleData?.title?.getString(context = context),
-            description = baseArticleData?.description?.getString(context = context),
-            url = baseArticleData?.urlToSource?.getString(context = context),
-            publishedAt = baseArticleData?.publishedAt?.getString(context = context),
-            content = baseArticleData?.content?.getString(context = context),
-            sourceId = baseArticleData?.sourceId?.getString(context = context),
-            sourceName = baseArticleData?.sourceName?.getString(context = context),
-            isFavorite = baseArticleData?.isFavorite ?: false,
-            urlToImage = (baseArticleData?.image as IconProvider.Url).url
         )
     }
 

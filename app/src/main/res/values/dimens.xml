@@ -24,9 +24,9 @@
     <dimen name="grid_500">500dp</dimen>
 
     <dimen name="text_size_h1">36sp</dimen>
-    <dimen name="text_size_h2">33sp</dimen>
-    <dimen name="text_size_h3">30sp</dimen>
-    <dimen name="text_size_h4">27sp</dimen>
+    <dimen name="text_size_h2">34sp</dimen>
+    <dimen name="text_size_h3">31sp</dimen>
+    <dimen name="text_size_h4">28sp</dimen>
     <dimen name="text_size_h5">24sp</dimen>
     <dimen name="text_size_h6">22sp</dimen>
     <dimen name="text_size_lead_1">24sp</dimen>

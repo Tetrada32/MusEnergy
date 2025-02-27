@@ -11,10 +11,12 @@ import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.navigation.fragment.navArgs
+import com.gahov.domain.entities.articles.ArticleEntity
 import com.gahov.musenergy.R
 import com.gahov.musenergy.arch.ktx.getString
 import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.ui.fragment.BaseFragment
+import com.gahov.musenergy.arch.ui.view.model.IconProvider
 import com.gahov.musenergy.arch.ui.view.model.TextProvider
 import com.gahov.musenergy.common.extensions.openInBrowser
 import com.gahov.musenergy.common.extensions.shareWithUrl
@@ -52,10 +54,20 @@ class ArticleDetailsFragment :
         binding.root.findViewById<ComposeView>(R.id.favoriteButton).setContent {
             MaterialTheme {
                 FavoriteArticleButton(onClick = {
-                    viewModel.onFavoriteButtonClick(
-                        articleEntityBuilder.buildDomainArticleFromView(
-                            requireContext(),
-                            binding.article?.articleData
+                    //TODO temporary solution
+                    val article = binding.article?.articleData ?: return@FavoriteArticleButton
+                    viewModel.onFavoriteButtonClick(ArticleEntity(
+                        id = article.itemId,
+                        author = article.author.getString(requireContext()),
+                        title = article.title.getString(requireContext()),
+                        description = article.description.getString(requireContext()),
+                        url = article.urlToSource.getString(requireContext()),
+                        publishedAt = article.publishedAt.getString(requireContext()),
+                        content = article.content.getString(requireContext()),
+                        sourceId = article.sourceId.getString(requireContext()),
+                        sourceName = article.sourceName.getString(requireContext()),
+                        isFavorite = article.isFavorite,
+                        urlToImage = (article.image as IconProvider.Url).url
                         )
                     )
                 })

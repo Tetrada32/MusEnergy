@@ -2,8 +2,8 @@
 <resources>
 
     <style name="Widget.MusEnergy.Card" parent="Widget.MaterialComponents.CardView">
-        <item name="cardElevation">@dimen/grid_8</item>
-        <item name="cardCornerRadius">@dimen/grid_8</item>
+        <item name="cardElevation">@dimen/grid_5</item>
+        <item name="cardCornerRadius">@dimen/grid_10</item>
     </style>
 
     <style name="TextAppearance.MusEnergy.Text.Small1" parent="TextAppearance.MaterialComponents.Body2">
