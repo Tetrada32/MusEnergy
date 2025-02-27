@@ -39,12 +39,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.compose.hiltViewModel
-import coil3.compose.AsyncImage
 import com.gahov.domain.entities.articles.ArticleEntity
 import com.gahov.domain.entities.articles.ArticleEntity.Companion.PLACEHOLDER_IMAGE
 import com.gahov.musenergy.common.composable.Colors.BlueGray15
 import com.gahov.musenergy.common.composable.Colors.BlueGray60
 import com.gahov.musenergy.common.composable.Fonts.circularXXFontFamily
+import com.gahov.musenergy.common.extensions.LoadImage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -105,10 +105,9 @@ class FavoritesFragment : Fragment() {
 
     @Composable
     fun FavoritesImage(imageUrl: String) {
-        AsyncImage(
-            model = imageUrl,
+        LoadImage(
+            url = imageUrl,
             contentScale = ContentScale.Crop,
-            contentDescription = "Favorite Article Image",
             modifier = Modifier
                 .height(200.dp)
                 .fillMaxWidth()
@@ -181,9 +180,8 @@ class FavoritesFragment : Fragment() {
                 textAlign = TextAlign.Center
             )
 
-            AsyncImage(
-                model = PLACEHOLDER_IMAGE,
-                contentDescription = "No favorites",
+            LoadImage(
+                url = PLACEHOLDER_IMAGE,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()

@@ -14,7 +14,7 @@ class CoilImagePreloaderImpl(private val context: Context) : CoilImagePreloader 
         val request = ImageRequest.Builder(context)
             .data(url)
             .diskCacheKey(diskCacheKey)
-            .memoryCachePolicy(CachePolicy.DISABLED)
+            .memoryCachePolicy(CachePolicy.ENABLED)
             .diskCachePolicy(CachePolicy.WRITE_ONLY)
             .build()
         imageLoader.enqueue(request)
