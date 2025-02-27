@@ -9,7 +9,7 @@ interface FavoritesRepository {
 
     suspend fun fetchAllFavorites(): Flow<Either<Failure, List<ArticleEntity>>>
 
-    suspend fun addToFavorites(articleEntity: ArticleEntity): Either<Failure, Unit>
+    suspend fun updateFavoriteStatus(articleId: Long, isFavorite: Boolean): Either<Failure, Unit>
 
     suspend fun deleteFavorite(id: Long): Either<Failure, Unit>
 

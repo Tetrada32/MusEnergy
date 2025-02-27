@@ -3,9 +3,11 @@ package com.gahov.musenergy.feature.favorites
 import androidx.lifecycle.LiveData
 import com.gahov.domain.component.logger.Logger
 import com.gahov.domain.entities.articles.ArticleEntity
+import com.gahov.domain.entities.articles.params.FavoriteArticleParams
 import com.gahov.domain.entities.common.Either
 import com.gahov.domain.entities.failure.Failure
 import com.gahov.domain.usecase.articles.favorites.FetchFavouritesUseCase
+import com.gahov.domain.usecase.articles.favorites.UpdateFavouriteUseCase
 import com.gahov.musenergy.arch.controller.BaseViewModel
 import com.gahov.musenergy.arch.lifecycle.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,14 +16,9 @@ import javax.inject.Inject
 @HiltViewModel
 class FavoritesViewModel @Inject constructor(
     private val fetchFavouritesUseCase: FetchFavouritesUseCase,
+    private val updateFavouriteUseCase: UpdateFavouriteUseCase,
     private val logger: Logger,
 ) : BaseViewModel() {
-
-    companion object {
-        //TODO do not keep it here :D
-        val placeholderImage =
-            "https://www.roadiemusic.com/blog/wp-content/uploads/2020/02/Is-Rock-Music-Dead.png"
-    }
 
     init {
         loadFavouritesContent()
@@ -52,6 +49,13 @@ class FavoritesViewModel @Inject constructor(
     }
 
     fun removeFromFavorites(article: ArticleEntity) {
-        //TODO
+        launch {
+            updateFavouriteUseCase.execute(
+                FavoriteArticleParams(
+                    id = article.id ?: return@launch,
+                    newFavoriteStatus = !article.isFavorite
+                )
+            )
+        }
     }
 }

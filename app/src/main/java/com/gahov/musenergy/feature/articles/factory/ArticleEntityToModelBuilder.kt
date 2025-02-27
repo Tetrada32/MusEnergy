@@ -27,6 +27,10 @@ class ArticleEntityToModelBuilder : ArticleEntityBuilder {
         return articleItems
     }
 
+    override fun buildArticleDetails(articleEntity: ArticleEntity): ArticleModel {
+        return ArticleModel.DefaultArticle(articleData = createBaseArticleData(articleEntity))
+    }
+
     override fun buildCategoriesList(
         category: SearchNewsCategory,
         articleEntityItems: List<ArticleEntity>

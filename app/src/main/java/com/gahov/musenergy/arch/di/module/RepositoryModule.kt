@@ -27,11 +27,15 @@ class RepositoryModule {
     @Singleton
     internal fun provideArticlesRepository(
         articlesRemoteSource: ArticlesRemoteSource,
-        articlesRemoteMapper: ArticlesRemoteMapper
+        articlesRemoteMapper: ArticlesRemoteMapper,
+        articlesLocalSource: ArticlesLocalSource,
+        articlesLocalMapper: ArticlesLocalMapper
     ): ArticlesRepository {
         return ArticlesRepositoryImpl(
             remoteSource = articlesRemoteSource,
-            articlesRemoteMapper = articlesRemoteMapper
+            localSource = articlesLocalSource,
+            remoteMapper = articlesRemoteMapper,
+            localMapper = articlesLocalMapper
         )
     }
 

@@ -5,8 +5,10 @@ import com.gahov.domain.repository.articles.SearchCategoriesRepository
 import com.gahov.domain.repository.favorites.FavoritesRepository
 import com.gahov.domain.repository.stories.StoriesRepository
 import com.gahov.domain.usecase.articles.categories.LoadSearchCategoriesUseCase
+import com.gahov.domain.usecase.articles.details.FetchArticleDetailsUseCase
 import com.gahov.domain.usecase.articles.favorites.FetchFavouritesUseCase
 import com.gahov.domain.usecase.articles.frontpage.LoadFrontpageUseCase
+import com.gahov.domain.usecase.articles.frontpage.UpdateFrontpageUseCase
 import com.gahov.domain.usecase.articles.list.LoadArticleListUseCase
 import com.gahov.domain.usecase.stories.LoadStoriesListUseCase
 import dagger.Module
@@ -23,40 +25,42 @@ class UseCaseModule {
     @Singleton
     internal fun provideLoadFrontpageUseCase(
         articlesRepository: ArticlesRepository
-    ) = LoadFrontpageUseCase(
-        repository = articlesRepository
-    )
+    ) = LoadFrontpageUseCase(repository = articlesRepository)
 
     @Provides
     @Singleton
     internal fun provideLoadCategoriesUseCase(
         searchCategoriesRepository: SearchCategoriesRepository
-    ) = LoadSearchCategoriesUseCase(
-        repository = searchCategoriesRepository
-    )
+    ) = LoadSearchCategoriesUseCase(repository = searchCategoriesRepository)
 
 
     @Provides
     @Singleton
     internal fun provideLoadArticleListUseCase(
         articlesRepository: ArticlesRepository
-    ) = LoadArticleListUseCase(
-        repository = articlesRepository
-    )
+    ) = LoadArticleListUseCase(repository = articlesRepository)
 
     @Provides
     @Singleton
     internal fun provideLoadStoriesListUseCase(
         storiesRepository: StoriesRepository
-    ) = LoadStoriesListUseCase(
-        repository = storiesRepository
-    )
+    ) = LoadStoriesListUseCase(repository = storiesRepository)
 
     @Provides
     @Singleton
     internal fun provideFetchFavouritesListUseCase(
         favoritesRepository: FavoritesRepository
-    ) = FetchFavouritesUseCase(
-        repository = favoritesRepository
-    )
+    ) = FetchFavouritesUseCase(repository = favoritesRepository)
+
+    @Provides
+    @Singleton
+    internal fun provideUpdateFrontpageUseCase(
+        articlesRepository: ArticlesRepository
+    ) = UpdateFrontpageUseCase(repository = articlesRepository)
+
+    @Provides
+    @Singleton
+    internal fun provideFetchArticleDetailsUseCase(
+        articlesRepository: ArticlesRepository
+    ) = FetchArticleDetailsUseCase(repository = articlesRepository)
 }

@@ -9,11 +9,15 @@ import com.gahov.domain.entities.failure.Failure
 import com.gahov.domain.repository.favorites.FavoritesRepository
 import javax.inject.Inject
 
-class AddFavouriteUseCase @Inject constructor(private val repository: FavoritesRepository) :
+class UpdateFavouriteUseCase @Inject constructor(private val repository: FavoritesRepository) :
     AsyncUseCase<Unit>() {
 
     override suspend fun execute(param: UseCase.Params?): Either<Failure, Unit> {
-        return (param as? FavoriteArticleParams)?.articleEntity?.let { repository.addToFavorites(it) }
-            ?: Either.Left(Failure.DataSourceException(NotFoundException()))
+        return (param as? FavoriteArticleParams)?.let {
+            repository.updateFavoriteStatus(
+                it.id,
+                it.newFavoriteStatus
+            )
+        } ?: Either.Left(Failure.DataSourceException(NotFoundException()))
     }
 }

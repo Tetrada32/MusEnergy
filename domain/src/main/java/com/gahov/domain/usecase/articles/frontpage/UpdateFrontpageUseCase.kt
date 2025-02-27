@@ -7,11 +7,11 @@ import com.gahov.domain.entities.failure.Failure
 import com.gahov.domain.entities.articles.ArticleEntity
 import com.gahov.domain.repository.articles.ArticlesRepository
 
-class LoadFrontpageUseCase(
+class UpdateFrontpageUseCase(
     private val repository: ArticlesRepository
 ) : AsyncUseCase<List<ArticleEntity>>() {
 
     override suspend fun execute(param: UseCase.Params?): Either<Failure, List<ArticleEntity>> {
-        return repository.getArticles()
+        return repository.loadArticles()
     }
 }

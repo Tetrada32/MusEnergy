@@ -5,33 +5,31 @@ import android.view.View
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.navigation.fragment.navArgs
-import com.gahov.domain.entities.articles.ArticleEntity
 import com.gahov.musenergy.R
 import com.gahov.musenergy.arch.ktx.getString
 import com.gahov.musenergy.arch.router.command.Command
 import com.gahov.musenergy.arch.ui.fragment.BaseFragment
-import com.gahov.musenergy.arch.ui.view.model.IconProvider
 import com.gahov.musenergy.arch.ui.view.model.TextProvider
 import com.gahov.musenergy.common.extensions.openInBrowser
 import com.gahov.musenergy.common.extensions.shareWithUrl
 import com.gahov.musenergy.databinding.FragmentArticleDetailsBinding
 import com.gahov.musenergy.feature.articles.details.command.ArticleDetailsCommand
 import com.gahov.musenergy.feature.articles.factory.ArticleEntityBuilder
+import com.gahov.musenergy.feature.articles.model.ArticleModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ArticleDetailsFragment :
-    BaseFragment<FragmentArticleDetailsBinding, ArticleDetailsViewModel>(
-        contentLayoutID = R.layout.fragment_article_details,
-        viewModelClass = ArticleDetailsViewModel::class.java
-    ) {
+class ArticleDetailsFragment : BaseFragment<FragmentArticleDetailsBinding, ArticleDetailsViewModel>(
+    contentLayoutID = R.layout.fragment_article_details,
+    viewModelClass = ArticleDetailsViewModel::class.java
+) {
 
     private val args: ArticleDetailsFragmentArgs by navArgs()
 
@@ -40,52 +38,34 @@ class ArticleDetailsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupContent()
+
+        viewModel.fetchArticleDetails(args.articleId)
     }
 
-    private fun setupContent() {
-        val articleDetails = args.article
+    private fun setupContent(article: ArticleModel) {
         binding.presenter = viewModel
-        binding.article = articleDetails
+        binding.article = article
+        binding.invalidateAll()
         setupFavoritesButton()
     }
 
     private fun setupFavoritesButton() {
         binding.root.findViewById<ComposeView>(R.id.favoriteButton).setContent {
             MaterialTheme {
-                FavoriteArticleButton(onClick = {
-                    //TODO temporary solution
-                    val article = binding.article?.articleData ?: return@FavoriteArticleButton
-                    viewModel.onFavoriteButtonClick(ArticleEntity(
-                        id = article.itemId,
-                        author = article.author.getString(requireContext()),
-                        title = article.title.getString(requireContext()),
-                        description = article.description.getString(requireContext()),
-                        url = article.urlToSource.getString(requireContext()),
-                        publishedAt = article.publishedAt.getString(requireContext()),
-                        content = article.content.getString(requireContext()),
-                        sourceId = article.sourceId.getString(requireContext()),
-                        sourceName = article.sourceName.getString(requireContext()),
-                        isFavorite = article.isFavorite,
-                        urlToImage = (article.image as IconProvider.Url).url
-                        )
-                    )
+                val isFavorite = binding.article?.articleData?.isFavorite ?: false
+                FavoriteArticleButton(isFavorite, onClick = {
+                    viewModel.onFavoriteButtonClick(args.articleId, !isFavorite)
                 })
             }
         }
     }
 
     @Composable
-    fun FavoriteArticleButton(onClick: () -> Unit) {
-        var isFavorite = binding.article?.articleData?.isFavorite ?: false
-
-        SmallFloatingActionButton(
-            onClick = {
-                isFavorite = !isFavorite
-                onClick()
-            },
+    fun FavoriteArticleButton(isFavorite: Boolean, onClick: () -> Unit) {
+        FloatingActionButton(
+            onClick = { onClick() },
             containerColor = MaterialTheme.colorScheme.secondaryContainer,
-            contentColor = if (isFavorite) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSecondaryContainer
+            contentColor = MaterialTheme.colorScheme.primary
         ) {
             if (isFavorite) {
                 Icon(Icons.Filled.Favorite, "Add article to favorites")
@@ -101,6 +81,7 @@ class ArticleDetailsFragment :
                 when (this) {
                     is ArticleDetailsCommand.OnOpenInBrowser -> openInBrowser(sourceUrl)
                     is ArticleDetailsCommand.ShareArticle -> shareArticle(shareUrl)
+                    is ArticleDetailsCommand.DisplayContent -> setupContent(article)
                 }
             } else {
                 super.handleFeatureCommand(command)

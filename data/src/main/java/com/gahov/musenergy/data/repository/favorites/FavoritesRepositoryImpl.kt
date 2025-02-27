@@ -17,8 +17,8 @@ class FavoritesRepositoryImpl(
 ) : FavoritesRepository {
 
     override suspend fun fetchAllFavorites(): Flow<Either<Failure, List<ArticleEntity>>> {
-        logger.log(message = "Favorites Repository() request")
-        return localSource.fetchFavorites().map { result ->
+        logger.log(message = "FavoritesRepositoryImpl fetchAllFavorites()")
+        return localSource.fetchFavoritesFlow().map { result ->
             when (result) {
                 is Either.Left -> result
                 is Either.Right -> Either.Right(localMapper.toDomain(result.success))
@@ -26,11 +26,12 @@ class FavoritesRepositoryImpl(
         }
     }
 
-    override suspend fun addToFavorites(articleEntity: ArticleEntity): Either<Failure, Unit> {
-        articleEntity.isFavorite = true
-        return localSource.addItems(listOf(localMapper.toDatabase(articleEntity)))
+    override suspend fun updateFavoriteStatus(
+        articleId: Long,
+        isFavorite: Boolean
+    ): Either<Failure, Unit> {
+        return localSource.updateFavoriteStatus(articleId, isFavorite)
     }
-
 
     override suspend fun deleteFavorite(id: Long): Either<Failure, Unit> {
         return localSource.deleteById(id)

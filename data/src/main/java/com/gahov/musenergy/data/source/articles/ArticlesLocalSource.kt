@@ -9,7 +9,7 @@ interface ArticlesLocalSource {
 
     suspend fun fetchEverything(): Either<Failure, List<ArticleDTO>>
 
-    suspend fun fetchById(id: Long): Either<Failure, ArticleDTO>
+    suspend fun fetchArticleByIdFlow(id: Long): Flow<Either<Failure, ArticleDTO>>
 
     suspend fun addItems(items: List<ArticleDTO>): Either<Failure, Unit>
 
@@ -18,7 +18,9 @@ interface ArticlesLocalSource {
     suspend fun deleteById(id: Long): Either<Failure, Unit>
 
 
-    suspend fun fetchFavorites(): Flow<Either<Failure, List<ArticleDTO>>>
+    suspend fun updateFavoriteStatus(articleId: Long, isFavorite: Boolean): Either<Failure, Unit>
+
+    suspend fun fetchFavoritesFlow(): Flow<Either<Failure, List<ArticleDTO>>>
 
     suspend fun deleteAllFavorites(): Either<Failure, Unit>
 }

@@ -4,8 +4,7 @@ import com.gahov.domain.entities.articles.ArticleEntity
 import com.gahov.musenergy.data.mapper.common.ApiMapper
 import com.gahov.musenergy.data.remote.entities.article.ArticleResponse
 
-class ArticlesRemoteMapper :
-    ApiMapper<ArticleResponse, ArticleEntity> {
+class ArticlesRemoteMapper : ApiMapper<ArticleResponse, ArticleEntity> {
     override fun toDomain(apiModel: ArticleResponse): ArticleEntity {
         return ArticleEntity(
             sourceName = apiModel.sourceResponse?.name,
@@ -19,5 +18,9 @@ class ArticlesRemoteMapper :
             content = apiModel.content,
             id = apiModel.title?.hashCode()?.toLong()
         )
+    }
+
+    override fun toDomain(list: List<ArticleResponse>?): List<ArticleEntity> {
+        return list?.map { toDomain(apiModel = it) } ?: emptyList()
     }
 }

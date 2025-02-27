@@ -38,7 +38,11 @@ class ArticlesLocalMapper : DbMapper<ArticleEntity, ArticleDTO> {
         )
     }
 
-    override fun toDomain(dbModels: List<ArticleDTO>?): List<ArticleEntity> {
-        return dbModels?.map { toDomain(it) } ?: emptyList()
+    override fun toDomain(dbModelList: List<ArticleDTO>?): List<ArticleEntity> {
+        return dbModelList?.map { toDomain(it) } ?: emptyList()
+    }
+
+    override fun toDatabase(domainModelList: List<ArticleEntity>?): List<ArticleDTO> {
+        return domainModelList?.map { toDatabase(it) } ?: emptyList()
     }
 }

@@ -8,6 +8,8 @@ interface ArticleEntityBuilder {
 
     fun buildFrontpageList(articleEntityItems: List<ArticleEntity>): List<ArticleModel>
 
+    fun buildArticleDetails(articleEntity: ArticleEntity): ArticleModel
+
     fun buildCategoriesList(
         category: SearchNewsCategory,
         articleEntityItems: List<ArticleEntity>

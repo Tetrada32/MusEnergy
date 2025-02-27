@@ -15,7 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
@@ -41,10 +41,10 @@ import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil3.compose.AsyncImage
 import com.gahov.domain.entities.articles.ArticleEntity
+import com.gahov.domain.entities.articles.ArticleEntity.Companion.PLACEHOLDER_IMAGE
 import com.gahov.musenergy.common.composable.Colors.BlueGray15
 import com.gahov.musenergy.common.composable.Colors.BlueGray60
 import com.gahov.musenergy.common.composable.Fonts.circularXXFontFamily
-import com.gahov.musenergy.feature.favorites.FavoritesViewModel.Companion.placeholderImage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -84,17 +84,17 @@ class FavoritesFragment : Fragment() {
         ElevatedCard(
             colors = CardDefaults.cardColors(containerColor = Color.White),
             modifier = modifier
-                .padding(horizontal = 25.dp, vertical = 11.dp)
+                .padding(horizontal = 25.dp, vertical = 12.dp)
                 .fillMaxWidth()
         ) {
             Column(Modifier.padding(bottom = 9.dp)) {
                 Box(modifier = Modifier.fillMaxWidth()) {
-                    FavoritesImage((article.urlToImage ?: placeholderImage))
+                    FavoritesImage((article.urlToImage ?: PLACEHOLDER_IMAGE))
                     RemoveFavoriteArticleButton(
                         onClick = onRemove,
                         modifier = Modifier
                             .align(Alignment.BottomEnd)
-                            .padding(8.dp)
+                            .padding(end = 8.dp, bottom = 12.dp)
                     )
                 }
                 ArticleSource(article.sourceName.toString())
@@ -156,7 +156,7 @@ class FavoritesFragment : Fragment() {
             containerColor = MaterialTheme.colorScheme.secondaryContainer,
             contentColor = MaterialTheme.colorScheme.primary
         ) {
-            Icon(Icons.Filled.FavoriteBorder, contentDescription = "Remove from favorites")
+            Icon(Icons.Filled.Favorite, "Remove article from favorites")
         }
     }
 
@@ -182,7 +182,7 @@ class FavoritesFragment : Fragment() {
             )
 
             AsyncImage(
-                model = placeholderImage,
+                model = PLACEHOLDER_IMAGE,
                 contentDescription = "No favorites",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
