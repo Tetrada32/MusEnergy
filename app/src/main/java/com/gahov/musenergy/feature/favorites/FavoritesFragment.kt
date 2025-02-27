@@ -73,6 +73,7 @@ class FavoritesFragment : Fragment() {
     fun FavoritesScreen() {
         val viewModel: FavoritesViewModel = hiltViewModel()
 
+        //TODO use "remember"
         val favourites = viewModel.favouritesArticles.observeAsState().value ?: emptyList()
 
         LazyColumn(Modifier.fillMaxSize()) {

@@ -38,8 +38,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationHost {
             navHostContainerID = R.id.mainNavHost,
             navGraphIds = listOf(
                 R.navigation.frontpage,
-                R.navigation.search,
                 R.navigation.favorites,
+                R.navigation.search,
                 R.navigation.profile,
             ),
             bottomNavigationViewID = R.id.bottomNavigation

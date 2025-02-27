@@ -19,25 +19,6 @@
         android:fitsSystemWindows="false"
         android:orientation="vertical">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/frontpageStoriesButtonStub"
-            android:layout_width="@dimen/grid_40"
-            android:layout_height="@dimen/grid_40"
-            android:layout_marginStart="@dimen/grid_30"
-            android:layout_marginTop="@dimen/grid_35"
-            android:contentDescription="@null"
-            android:importantForAccessibility="no"
-            android:onClick="@{() -> presenter.onStoriesButtonClick()}"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_stories"
-            app:backgroundTint="@color/grey_100"
-            app:fabCustomSize="@dimen/grid_40"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_marginTopSystemWindowInsets="@{true}"
-            app:maxImageSize="@dimen/grid_40"
-            tools:visibility="visible" />
-
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/frontpageSwipeLayout"
             android:layout_width="match_parent"

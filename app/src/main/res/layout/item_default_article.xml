@@ -26,8 +26,8 @@
             style="@style/Widget.MusEnergy.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/grid_25"
-            android:layout_marginBottom="@dimen/grid_80"
+            android:layout_marginHorizontal="@dimen/grid_16"
+            android:layout_marginBottom="@dimen/grid_50"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,58 +37,50 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/defaultArticleTitle"
+                    style="@style/TextAppearance.MusEnergy.Headline4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/grid_25"
+                    android:layout_marginTop="@dimen/grid_16"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:setText="@{article.articleData.title}"
+                    tools:text="This is the best news!" />
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/defaultArticleImage"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/grid_16"
                     android:contentDescription="@null"
                     android:importantForAccessibility="no"
                     android:minHeight="@dimen/grid_100"
                     android:scaleType="centerCrop"
-                    app:layout_constraintBottom_toTopOf="@id/defaultArticleBottomBlock"
-                    app:layout_constraintDimensionRatio="H,27:32"
+                    app:layout_constraintBottom_toTopOf="@id/defaultArticleSubtitle"
+                    app:layout_constraintDimensionRatio="H,30:32"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/defaultArticleTitle"
                     app:setImage="@{article.articleData.image}" />
-
-                <RelativeLayout
-                    android:id="@+id/defaultArticleBottomBlock"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:importantForAccessibility="no"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/defaultArticleImage" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/defaultArticleSubtitle"
                     style="@style/TextAppearance.MusEnergy.Text.Small2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/grid_25"
+                    android:layout_marginHorizontal="@dimen/grid_25"
                     android:layout_marginTop="@dimen/grid_16"
+                    android:gravity="end"
                     android:textColor="@color/bluegrey_60"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/defaultArticleImage"
                     app:setText="@{article.articleData.sourceName}"
                     tools:text="Short article" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/defaultArticleTitle"
-                    style="@style/TextAppearance.MusEnergy.Headline4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/grid_25"
-                    android:layout_marginTop="@dimen/grid_5"
-                    app:layout_constraintBottom_toTopOf="@id/defaultArticleAllButton"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/defaultArticleSubtitle"
-                    app:setText="@{article.articleData.title}"
-                    tools:text="This is the best news!" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/defaultArticleAllButton"
@@ -105,7 +97,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/defaultArticleTitle" />
+                    app:layout_constraintTop_toBottomOf="@id/defaultArticleSubtitle" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

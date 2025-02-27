@@ -3,7 +3,7 @@
 
 <!--    Bottom navigation strings-->
     <string name="navigationExplore">Explore</string>
-    <string name="navigationSearch">Search</string>
+    <string name="navigationCategories">Categories</string>
     <string name="navigationFavorites">Favorites</string>
     <string name="navigationProfile">Profile</string>
 

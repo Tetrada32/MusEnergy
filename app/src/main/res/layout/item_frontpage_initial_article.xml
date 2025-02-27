@@ -57,36 +57,38 @@
                     app:layout_constraintTop_toBottomOf="@id/frontpageInitialArticleImage" />
 
                 <TextView
-                    android:id="@+id/frontpageCollectionSubtitle"
-                    style="@style/TextAppearance.MusEnergy.Text.Small2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/grid_25"
-                    android:layout_marginTop="@dimen/grid_16"
-                    android:textColor="@color/bluegrey_60"
-                    app:layout_constraintBottom_toTopOf="@id/frontpageCollectionTitle"
-                    app:layout_constraintStart_toStartOf="@+id/frontpageInitialArticleImage"
-                    app:layout_constraintTop_toBottomOf="@id/frontpageInitialArticleImage"
-                    app:setText="@{article.articleData.sourceName}"
-                    tools:text="Subtitle" />
-
-                <TextView
-                    android:id="@+id/frontpageCollectionTitle"
+                    android:id="@+id/frontpageArticleTitle"
                     style="@style/TextAppearance.MusEnergy.Headline4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/grid_25"
                     android:layout_marginTop="@dimen/grid_5"
                     android:layout_marginBottom="@dimen/grid_5"
-                    app:layout_constraintBottom_toTopOf="@id/frontpageCollectionAllButton"
+                    app:layout_constraintBottom_toTopOf="@id/frontpageArticleText"
                     app:layout_constraintEnd_toEndOf="@+id/frontpageInitialArticleImage"
                     app:layout_constraintStart_toStartOf="@+id/frontpageInitialArticleImage"
-                    app:layout_constraintTop_toBottomOf="@id/frontpageCollectionSubtitle"
+                    app:layout_constraintTop_toBottomOf="@id/frontpageInitialArticleImage"
                     app:setText="@{article.articleData.title}"
                     tools:text="TOP Inital News Article! " />
 
+                <TextView
+                    android:id="@+id/frontpageArticleText"
+                    style="@style/TextAppearance.MusEnergy.Text.Small1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/grid_25"
+                    android:layout_marginVertical="@dimen/grid_16"
+                    android:maxLines="4"
+                    app:setText="@{article.articleData.description}"
+                    android:ellipsize="end"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/frontpageReadMoreButton"
+                    app:layout_constraintTop_toBottomOf="@id/frontpageArticleTitle"
+                    tools:text="Very long preview text from the article! " />
+
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/frontpageCollectionAllButton"
+                    android:id="@+id/frontpageReadMoreButton"
                     style="@style/Widget.MusEnergy.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -98,7 +100,7 @@
                     android:onClick="@{() -> presenter.onArticleClick(article)}"
                     android:text="@string/read_more"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/frontpageCollectionTitle" />
+                    app:layout_constraintTop_toBottomOf="@+id/frontpageArticleText" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

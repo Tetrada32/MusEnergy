@@ -7,14 +7,14 @@
         android:title="@string/navigationExplore" />
 
     <item
-        android:id="@+id/search"
-        android:icon="@drawable/ic_search"
-        android:title="@string/navigationSearch" />
-
-    <item
         android:id="@+id/favorites"
         android:icon="@drawable/ic_favorite"
         android:title="@string/navigationFavorites" />
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_categories"
+        android:title="@string/navigationCategories" />
 
     <item
         android:id="@+id/profile"
