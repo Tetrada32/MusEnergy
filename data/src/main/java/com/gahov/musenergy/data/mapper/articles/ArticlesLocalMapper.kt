@@ -8,7 +8,7 @@ class ArticlesLocalMapper : DbMapper<ArticleEntity, ArticleDTO> {
 
     override fun toDatabase(domainModel: ArticleEntity): ArticleDTO {
         return ArticleDTO(
-            id = domainModel.id,
+            id = domainModel.title?.hashCode()?.toLong() ?: 12L ,
             image = domainModel.urlToImage,
             title = domainModel.title,
             description = domainModel.description,
